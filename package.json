@@ -1,0 +1,34 @@
+{
+    "name": "holy-js-childs-monorepo",
+    "private": true,
+    "scripts": {
+        "start": "tramvai start holy-js-childs",
+        "build": "tramvai build holy-js-childs",
+        "preview": "tramvai start-prod holy-js-childs",
+        "analyze": "tramvai holy-js-childs --analyze=statoscope",
+        "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore .",
+        "test": "jest --passWithNoTests",
+        "test:watch": "jest --watch",
+        "test:integration": "playwright test"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": [
+            "eslint --fix"
+        ]
+    },
+    "workspaces": [
+        "child-apps/*"
+    ],
+    "packageManager": "yarn@4.13.0",
+    "devDependencies": {
+        "@tramvai/cli": "^6.79.33"
+    },
+    "dependencies": {
+        "tslib": "^2.0.3"
+    }
+}

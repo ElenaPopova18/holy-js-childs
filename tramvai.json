@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/@tramvai/cli/schema.json",
+  "projects": {
+    "holy-js-childs" : {
+      "name": "holy-js-childs",
+      "root": "child-apps/holy-js-childs",
+      "type": "child-app",
+      "postcss": {
+        "config": "apps/holy-js-childs/postcss"
+      }
+    }
+  }
+}
