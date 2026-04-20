@@ -1,5 +1,5 @@
 import React from 'react';
 
 export const RootCmp = () => {
-  return <div>Child App holy-js-childs</div>;
+  return <div>Привет! Ведьмы от мира тестирования рады видеть вас на нашем воркшопе 🧚‍</div>;
 };

@@ -1,23 +1,19 @@
 # holy-js-childs
 
-holy-js-childs tramvai child-app
+Это репа с микрофронтами child-apps
 
-## Install dependencies
+## Установка зависимостей
 
-Run installation with selected package manager `yarn`
+Перед началом работы установите зависимостью с помощью `yarn`
 
-## Usage
+## Работа с проектом
 
-- `npm start` - run development server
-- `npm build` - production build
+- `npm start` - запустить локальный сервер
+- `npm build` - сделать продакшен сборку
 
 ## Project structure
 
-* `child-apps/holy-js-childs` - child-app source code
-  * `index.ts` - child-app entry point
-  * `postcss.js` - postcss configuration object
+* `child-apps/holy-js-childs` - исходный код микрофронтов
+  * `index.ts` - входная точка микрофронта
+  * `postcss.js` - postcss конфиг микрофронта
 
-## Next steps
-
-- [tramvai documentation](https://tramvai.dev/docs/features/child-app/child-app)
-- [tramvai cli documentation](https://tramvai.dev/docs/references/cli/base)
