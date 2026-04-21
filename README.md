@@ -16,4 +16,3 @@
 * `child-apps/holy-js-childs` - исходный код микрофронтов
   * `index.ts` - входная точка микрофронта
   * `postcss.js` - postcss конфиг микрофронта
-
