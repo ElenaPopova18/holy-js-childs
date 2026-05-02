@@ -9,20 +9,14 @@ export interface RootCmpProps {
   disabled?: boolean;
 }
 
-const variantStyles: Record<string, string> = {
-  default: 'background-color: #f0f0f0; border-color: #ccc;',
-  primary: 'background-color: #007bff; border-color: #007bff; color: white;',
-  secondary: 'background-color: #6c757d; border-color: #6c757d; color: white;',
-};
-
-export const RootCmp: React.FC<RootCmpProps> = ({
+export function RootCmp({
   title = 'Привет!',
   subtitle = 'Ведьмы от мира тестирования рады видеть вас на нашем воркшопе 🧚‍',
   buttonText = 'Нажми меня',
   onButtonClick,
   variant = 'default',
   disabled = false,
-}) => {
+}: RootCmpProps) {
   const containerStyle: React.CSSProperties = {
     padding: '24px',
     borderRadius: '8px',
@@ -47,10 +41,22 @@ export const RootCmp: React.FC<RootCmpProps> = ({
     lineHeight: '1.5',
   };
 
+  const getVariantColor = (
+    colorType: 'background' | 'border' | 'text'
+  ): string => {
+    if (variant === 'primary') {
+      return colorType === 'text' ? 'white' : '#007bff';
+    }
+    if (variant === 'secondary') {
+      return colorType === 'text' ? 'white' : '#6c757d';
+    }
+    return colorType === 'text' ? '#333' : '#f0f0f0';
+  };
+
   const buttonStyle: React.CSSProperties = {
-    backgroundColor: variant === 'default' ? '#f0f0f0' : variant === 'primary' ? '#007bff' : '#6c757d',
-    borderColor: variant === 'default' ? '#ccc' : variant === 'primary' ? '#007bff' : '#6c757d',
-    color: variant === 'default' ? '#333' : 'white',
+    backgroundColor: getVariantColor('background'),
+    borderColor: getVariantColor('border'),
+    color: getVariantColor('text'),
     padding: '10px 20px',
     fontSize: '14px',
     fontWeight: '600',
@@ -66,6 +72,7 @@ export const RootCmp: React.FC<RootCmpProps> = ({
       <h2 style={titleStyle}>{title}</h2>
       <p style={subtitleStyle}>{subtitle}</p>
       <button
+        type="button"
         style={buttonStyle}
         onClick={onButtonClick}
         disabled={disabled}
@@ -84,4 +91,4 @@ export const RootCmp: React.FC<RootCmpProps> = ({
       </button>
     </div>
   );
-};
+}
