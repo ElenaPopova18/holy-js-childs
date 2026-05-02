@@ -6,7 +6,7 @@
       "root": "child-apps/holy-js-childs",
       "type": "child-app",
       "postcss": {
-        "config": "apps/holy-js-childs/postcss"
+        "config": "child-apps/holy-js-childs/postcss"
       }
     }
   }
