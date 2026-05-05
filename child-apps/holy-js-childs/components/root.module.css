@@ -61,3 +61,50 @@
 .buttonEnabled:hover {
   opacity: 0.8;
 }
+
+.buttonPrimaryDisabled {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.buttonPrimaryLarge {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+}
+
+.buttonSecondaryDisabled {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.buttonSecondaryNoAction {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+  opacity: 0.7;
+}
+
+.buttonDefaultDisabledNoAction {
+  background-color: #f0f0f0;
+  border-color: #ccc;
+  color: #333;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.buttonDefaultDisabled {
+  background-color: #f0f0f0;
+  border-color: #ccc;
+  color: #333;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
