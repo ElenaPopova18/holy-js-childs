@@ -27,3 +27,7 @@ node_modules/
 dist
 .tmp
 webpackAssets.json
+
+# Storybook
+storybook-static
+coverage

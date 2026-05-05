@@ -1,0 +1,26 @@
+{
+  "extends": "@istanbuljs/nyc-config-typescript",
+  "all": true,
+  "include": [
+    "child-apps/**/*.ts",
+    "child-apps/**/*.tsx"
+  ],
+  "exclude": [
+    "**/*.stories.ts",
+    "**/*.stories.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ],
+  "reporter": [
+    "html",
+    "text",
+    "lcov",
+    "json-summary"
+  ],
+  "report-dir": "./coverage/storybook/html",
+  "temp-dir": "./coverage/storybook",
+  "sourceMap": true,
+  "instrument": true
+}
