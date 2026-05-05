@@ -12577,6 +12577,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-complexity@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "eslint-plugin-complexity@npm:1.0.2"
+  dependencies:
+    eslint-utils: "npm:^3.0.0"
+  checksum: 10c0/328fdf02ec8b05e615aa214de52559747c9040f3a1207fa4e2ff0739aa44cdb16a14eb51a85b9a54d257d1fa98cbe05059cd76909634986c4b5d06ba4fe07f66
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-css-modules@npm:^2.12.0":
   version: 2.12.0
   resolution: "eslint-plugin-css-modules@npm:2.12.0"
@@ -12829,7 +12838,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-visitor-keys@npm:^2.1.0":
+"eslint-utils@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "eslint-utils@npm:3.0.0"
+  dependencies:
+    eslint-visitor-keys: "npm:^2.0.0"
+  peerDependencies:
+    eslint: ">=5"
+  checksum: 10c0/45aa2b63667a8d9b474c98c28af908d0a592bed1a4568f3145cd49fb5d9510f545327ec95561625290313fe126e6d7bdfe3fdbdb6f432689fab6b9497d3bfb52
+  languageName: node
+  linkType: hard
+
+"eslint-visitor-keys@npm:^2.0.0, eslint-visitor-keys@npm:^2.1.0":
   version: 2.1.0
   resolution: "eslint-visitor-keys@npm:2.1.0"
   checksum: 10c0/9f0e3a2db751d84067d15977ac4b4472efd6b303e369e6ff241a99feac04da758f46d5add022c33d06b53596038dbae4b4aceb27c7e68b8dfc1055b35e495787
@@ -14531,6 +14551,7 @@ __metadata:
     "@vitejs/plugin-react": "npm:^6.0.1"
     babel-plugin-istanbul: "npm:8.0.0"
     eslint: "npm:^8.57.0"
+    eslint-plugin-complexity: "npm:^1.0.2"
     eslint-plugin-css-modules: "npm:^2.12.0"
     eslint-plugin-jest: "npm:^29.15.2"
     eslint-plugin-playwright: "npm:^2.10.2"
