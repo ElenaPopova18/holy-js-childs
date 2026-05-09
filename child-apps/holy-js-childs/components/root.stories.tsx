@@ -1,6 +1,4 @@
-import React, { useEffect, useRef } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { within, userEvent, waitFor } from '@storybook/test';
 import { RootCmp } from './root';
 
 const meta = {

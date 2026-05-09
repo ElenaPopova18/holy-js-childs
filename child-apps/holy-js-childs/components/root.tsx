@@ -30,7 +30,8 @@ export function RootCmp({
   const [activityLog, setActivityLog] = useState<string[]>([]);
   const [witches, setWitches] = useState<string[]>([]);
 
-  const bgClass = backgroundColor === 'dark' ? styles.containerDark : styles.containerLight;
+  const bgClass =
+    backgroundColor === 'dark' ? styles.containerDark : styles.containerLight;
 
   // Логгируем активность пользователя каждую секунду
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -88,9 +89,7 @@ export function RootCmp({
       <div className={styles.witchesBlock}>
         {witches.length > 0 ? (
           <>
-            <div className={styles.witchesRow}>
-              {witches.join(' ')}
-            </div>
+            <div className={styles.witchesRow}>{witches.join(' ')}</div>
             {witches.length >= maxWitches && (
               <p className={styles.witchesLimit}>
                 ✨ Достигнут лимит ведьм! ({maxWitches})
