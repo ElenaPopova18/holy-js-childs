@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './root.module.css';
+import { ButtonManager, getButtonVariantClass } from './root.utils';
 
 export interface RootCmpProps {
   title?: string;
@@ -115,18 +116,32 @@ export function RootCmp({
         </div>
       )}
 
-      <button
-        type="button"
-        className={(() => {
-          if (variant === 'secondary') return styles.buttonSecondary;
-          if (variant === 'primary') return styles.buttonPrimary;
-          return styles.buttonDefault;
-        })()}
-        onClick={handleClick}
-        disabled={disabled}
-      >
-        {buttonText} {witches.length > 0 && `(${witches.length})`}
-      </button>
+      {(() => {
+        // ButtonManager используется для обработки кликов
+        const buttonManager = new ButtonManager();
+        const handleManagerClick = () => {
+          buttonManager.scheduleClick(`Witch summon #${clickCount + 1}`);
+        };
+
+        return (
+          <button
+            type="button"
+            className={getButtonVariantClass(
+              variant,
+              disabled,
+              buttonText,
+              onButtonClick
+            )}
+            onClick={() => {
+              handleManagerClick();
+              handleClick();
+            }}
+            disabled={disabled}
+          >
+            {buttonText} {witches.length > 0 && `(${witches.length})`}
+          </button>
+        );
+      })()}
     </div>
   );
 }
