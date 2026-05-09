@@ -8,6 +8,10 @@ export interface RootCmpProps {
   onButtonClick?: () => void;
   variant?: 'default' | 'primary' | 'secondary';
   disabled?: boolean;
+  backgroundColor?: 'light' | 'dark';
+  showSecretMessage?: boolean;
+  maxWitches?: number;
+  celebrationMode?: boolean;
 }
 
 export function RootCmp({
@@ -17,14 +21,19 @@ export function RootCmp({
   onButtonClick,
   variant = 'default',
   disabled = false,
+  backgroundColor = 'light',
+  showSecretMessage = false,
+  maxWitches = 10,
+  celebrationMode = false,
 }: RootCmpProps) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const _onButtonClick = onButtonClick;
   const [clickCount, setClickCount] = useState(0);
   const [activityLog, setActivityLog] = useState<string[]>([]);
   const [witches, setWitches] = useState<string[]>([]);
 
+  const bgClass = backgroundColor === 'dark' ? styles.containerDark : styles.containerLight;
+
   // Логгируем активность пользователя каждую секунду
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const timer = setInterval(() => {
       const timestamp = new Date().toLocaleTimeString();
@@ -38,11 +47,14 @@ export function RootCmp({
 
   const handleClick = () => {
     setClickCount(clickCount + 1);
-    setWitches((prev) => [...prev, '🧙‍♀️']);
+    if (witches.length < maxWitches) {
+      setWitches((prev) => [...prev, '🧙‍♀️']);
+    }
+    onButtonClick?.();
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${bgClass}`}>
       <h2 className={styles.title}>{title}</h2>
       <p className={styles.subtitle}>{subtitle}</p>
 
@@ -75,13 +87,34 @@ export function RootCmp({
 
       <div className={styles.witchesBlock}>
         {witches.length > 0 ? (
-          witches.join(' ')
+          <>
+            <div className={styles.witchesRow}>
+              {witches.join(' ')}
+            </div>
+            {witches.length >= maxWitches && (
+              <p className={styles.witchesLimit}>
+                ✨ Достигнут лимит ведьм! ({maxWitches})
+              </p>
+            )}
+          </>
         ) : (
           <span className={styles.witchesEmpty}>
             Нажми на кнопку, чтобы призвать ведьму!
           </span>
         )}
       </div>
+
+      {showSecretMessage && clickCount > 5 && (
+        <div className={styles.secretMessage}>
+          🎉 Секретное сообщение: Ты настоящий мастер призыва ведьм!
+        </div>
+      )}
+
+      {celebrationMode && clickCount > 0 && clickCount % 5 === 0 && (
+        <div className={styles.celebrationBlock}>
+          🎊🎈🎁 Поздравляем с {clickCount} кликами! 🎁🎈🎊
+        </div>
+      )}
 
       <button
         type="button"

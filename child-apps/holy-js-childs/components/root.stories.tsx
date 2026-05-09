@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, userEvent, waitFor } from '@storybook/test';
 import { RootCmp } from './root';
 
 const meta = {
@@ -14,6 +15,11 @@ const meta = {
       control: 'select',
       options: ['default', 'primary', 'secondary'],
       description: 'Вариант оформления кнопки',
+    },
+    backgroundColor: {
+      control: 'select',
+      options: ['light', 'dark'],
+      description: 'Фон компонента (светлый/тёмный)',
     },
     title: {
       control: 'text',
@@ -31,6 +37,18 @@ const meta = {
       control: 'boolean',
       description: 'Отключенное состояние кнопки',
     },
+    showSecretMessage: {
+      control: 'boolean',
+      description: 'Показывать секретное сообщение после 5 кликов',
+    },
+    maxWitches: {
+      control: 'number',
+      description: 'Максимальное количество ведьм',
+    },
+    celebrationMode: {
+      control: 'boolean',
+      description: 'Режим празднования каждые 5 кликов',
+    },
     onButtonClick: {
       action: 'clicked',
       description: 'Обработчик клика по кнопке',
@@ -42,18 +60,23 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    variant: 'default',
+    backgroundColor: 'light',
+  },
 };
 
 export const PrimaryVariant: Story = {
   args: {
     variant: 'primary',
+    backgroundColor: 'light',
   },
 };
 
 export const SecondaryVariant: Story = {
   args: {
     variant: 'secondary',
+    backgroundColor: 'light',
   },
 };
 
@@ -63,6 +86,7 @@ export const CustomTexts: Story = {
     subtitle:
       'Это пример компонента с настраиваемым текстом. Вы можете изменить любой текст через пропсы.',
     buttonText: 'Начать работу',
+    backgroundColor: 'light',
   },
 };
 
@@ -70,50 +94,6 @@ export const DisabledButton: Story = {
   args: {
     disabled: true,
     variant: 'primary',
-  },
-};
-
-export const WithClickHandler: Story = {
-  args: {
-    variant: 'primary',
-    onButtonClick: () => {
-      // eslint-disable-next-line no-alert
-      alert('Кнопка нажата! 🎉');
-    },
-  },
-};
-
-export const AllVariants: Story = {
-  render: () => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-        alignItems: 'center',
-      }}
-    >
-      <RootCmp variant="default" title="Default" buttonText="Default Button" />
-      <RootCmp variant="primary" title="Primary" buttonText="Primary Button" />
-      <RootCmp
-        variant="secondary"
-        title="Secondary"
-        buttonText="Secondary Button"
-      />
-    </div>
-  ),
-};
-
-export const FullyCustomized: Story = {
-  args: {
-    title: 'Полностью кастомный компонент',
-    subtitle:
-      'Этот компонент демонстрирует все возможности настройки: текст, стиль кнопки и обработчик клика.',
-    buttonText: 'Попробовать сейчас',
-    variant: 'primary',
-    onButtonClick: () => {
-      // eslint-disable-next-line no-console
-      console.log('Custom action triggered!');
-    },
+    backgroundColor: 'light',
   },
 };
