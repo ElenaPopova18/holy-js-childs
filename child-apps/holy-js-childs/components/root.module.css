@@ -22,6 +22,61 @@
   line-height: 1.5;
 }
 
+.statsBlock {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.statsRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.statsRow:last-child {
+  margin-bottom: 0;
+}
+
+.logBlock {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #fff3cd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.logTitle {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.logEntry {
+  margin: 5px 0;
+  color: #856404;
+}
+
+.logEmpty {
+  margin: 5px 0;
+  color: #856404;
+}
+
+.witchesBlock {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #e8f5e9;
+  border-radius: 6px;
+  font-size: 24px;
+  min-height: 40px;
+}
+
+.witchesEmpty {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Button base styles */
 .button {
   padding: 10px 20px;
   font-size: 14px;
@@ -29,82 +84,57 @@
   border: none;
   border-radius: 4px;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
+/* Button variants */
 .buttonDefault {
   background-color: #f0f0f0;
-  border-color: #ccc;
+  border: 1px solid #ccc;
   color: #333;
+}
+
+.buttonDefault:hover:not(:disabled) {
+  background-color: #e0e0e0;
 }
 
 .buttonPrimary {
   background-color: #007bff;
-  border-color: #007bff;
+  border: 1px solid #007bff;
   color: white;
+}
+
+.buttonPrimary:hover:not(:disabled) {
+  background-color: #0056b3;
 }
 
 .buttonSecondary {
   background-color: #6c757d;
-  border-color: #6c757d;
+  border: 1px solid #6c757d;
   color: white;
 }
 
-.buttonDisabled {
+.buttonSecondary:hover:not(:disabled) {
+  background-color: #545b62;
+}
+
+/* Disabled state for all variants */
+.button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.buttonEnabled {
-  cursor: pointer;
-}
-
-.buttonEnabled:hover {
-  opacity: 0.8;
-}
-
-.buttonPrimaryDisabled {
-  background-color: #007bff;
-  border-color: #007bff;
-  color: white;
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.buttonPrimaryLarge {
-  background-color: #007bff;
-  border-color: #007bff;
-  color: white;
-  padding: 14px 28px;
-  font-size: 16px;
-}
-
-.buttonSecondaryDisabled {
-  background-color: #6c757d;
-  border-color: #6c757d;
-  color: white;
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.buttonSecondaryNoAction {
-  background-color: #6c757d;
-  border-color: #6c757d;
-  color: white;
-  opacity: 0.7;
-}
-
-.buttonDefaultDisabledNoAction {
-  background-color: #f0f0f0;
+.buttonDefault:disabled {
+  background-color: #e0e0e0;
   border-color: #ccc;
-  color: #333;
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
-.buttonDefaultDisabled {
-  background-color: #f0f0f0;
-  border-color: #ccc;
-  color: #333;
-  opacity: 0.6;
-  cursor: not-allowed;
+.buttonPrimary:disabled {
+  background-color: #6c9ed6;
+  border-color: #6c9ed6;
+}
+
+.buttonSecondary:disabled {
+  background-color: #a7a9ac;
+  border-color: #a7a9ac;
 }
