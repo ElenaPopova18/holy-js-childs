@@ -8,7 +8,6 @@
         "analyze": "tramvai holy-js-childs --analyze=statoscope",
         "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore .",
         "test": "jest --passWithNoTests",
-        "test:watch": "jest --watch",
         "test:integration": "playwright test",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
