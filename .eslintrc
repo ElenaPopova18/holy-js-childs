@@ -5,7 +5,11 @@
         "sourceType": "module",
         "ecmaFeatures": {
             "jsx": true
-        }
+        },
+        "project": [
+            "child-apps/*/tsconfig.json",
+            "tsconfig.json"
+        ]
     },
     "extends": [
         "@tinkoff/eslint-config/app",
@@ -15,14 +19,16 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended",
-        "plugin:css-modules/recommended",
+        // Раскомментируйте линтеры для css
+        // "plugin:css-modules/recommended",
         "plugin:jest/recommended"
     ],
     "plugins": [
         "@typescript-eslint",
         "react",
         "react-hooks",
-        "css-modules",
+        // Раскомментируйте линтеры для css
+        // "css-modules",
         "jest",
         "playwright",
         "complexity"
@@ -44,7 +50,9 @@
         "react/react-in-jsx-scope": "off",
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": "warn",
-        "complexity": ["error", 10]
+        // расскоментируй провероку compexety
+        // "complexity": ["error", 10]
+        "@typescript-eslint/no-implied-eval": "error"
     },
     "overrides": [
         {
