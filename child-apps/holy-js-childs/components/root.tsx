@@ -34,8 +34,6 @@ export function RootCmp({
   const bgClass =
     backgroundColor === 'dark' ? styles.containerDark : styles.containerLight;
 
-  // Логгируем активность пользователя каждую секунду
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const timer = setInterval(() => {
       const timestamp = new Date().toLocaleTimeString();
