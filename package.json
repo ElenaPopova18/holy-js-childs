@@ -7,6 +7,7 @@
         "preview": "tramvai start-prod holy-js-childs",
         "analyze": "tramvai holy-js-childs --analyze=statoscope",
         "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore .",
+        "lint:file": "eslint --ext .ts,.tsx",
         "test": "jest --passWithNoTests",
         "test:integration": "playwright test",
         "storybook": "storybook dev -p 6006",
