@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { RootCmp, type RootCmpProps } from './root';
+import { RootCmp } from './root';
 
 const meta = {
   title: 'ChildApp/RootCmp',
@@ -60,7 +60,8 @@ export const SecondaryVariant: Story = {
 export const CustomTexts: Story = {
   args: {
     title: 'Добро пожаловать!',
-    subtitle: 'Это пример компонента с настраиваемым текстом. Вы можете изменить любой текст через пропсы.',
+    subtitle:
+      'Это пример компонента с настраиваемым текстом. Вы можете изменить любой текст через пропсы.',
     buttonText: 'Начать работу',
   },
 };
@@ -75,16 +76,30 @@ export const DisabledButton: Story = {
 export const WithClickHandler: Story = {
   args: {
     variant: 'primary',
-    onButtonClick: () => alert('Кнопка нажата! 🎉'),
+    onButtonClick: () => {
+      // eslint-disable-next-line no-alert
+      alert('Кнопка нажата! 🎉');
+    },
   },
 };
 
 export const AllVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+        alignItems: 'center',
+      }}
+    >
       <RootCmp variant="default" title="Default" buttonText="Default Button" />
       <RootCmp variant="primary" title="Primary" buttonText="Primary Button" />
-      <RootCmp variant="secondary" title="Secondary" buttonText="Secondary Button" />
+      <RootCmp
+        variant="secondary"
+        title="Secondary"
+        buttonText="Secondary Button"
+      />
     </div>
   ),
 };
@@ -92,9 +107,13 @@ export const AllVariants: Story = {
 export const FullyCustomized: Story = {
   args: {
     title: 'Полностью кастомный компонент',
-    subtitle: 'Этот компонент демонстрирует все возможности настройки: текст, стиль кнопки и обработчик клика.',
+    subtitle:
+      'Этот компонент демонстрирует все возможности настройки: текст, стиль кнопки и обработчик клика.',
     buttonText: 'Попробовать сейчас',
     variant: 'primary',
-    onButtonClick: () => console.log('Custom action triggered!'),
+    onButtonClick: () => {
+      // eslint-disable-next-line no-console
+      console.log('Custom action triggered!');
+    },
   },
 };
