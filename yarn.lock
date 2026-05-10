@@ -5863,12 +5863,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tinkoff/dippy@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "@tinkoff/dippy@npm:1.0.1"
+  dependencies:
+    tslib: "npm:^2.4.0"
+  checksum: 10c0/5a3616d2c00f5ab3be891a732ab5c29728ebf71ab8a68f2a27eb76ad0c123298e1fbfd2454852f70aea5e516f3ec740ba3ef97219ab1c319f6e36d85059c6ac5
+  languageName: node
+  linkType: hard
+
 "@tinkoff/env-validators@npm:0.5.3":
   version: 0.5.3
   resolution: "@tinkoff/env-validators@npm:0.5.3"
   dependencies:
     "@tinkoff/utils": "npm:^2.2.0"
   checksum: 10c0/77aad0f6980a4fe3d90bfbf663cad9c207f1c6ea9e8a50f1de15d8f77f0039ca011065d2acbbbf4b3d217ba68aec882d7a24c610f5a3485e998289afe248124c
+  languageName: node
+  linkType: hard
+
+"@tinkoff/env-validators@npm:0.5.4":
+  version: 0.5.4
+  resolution: "@tinkoff/env-validators@npm:0.5.4"
+  dependencies:
+    "@tinkoff/utils": "npm:^2.2.0"
+  checksum: 10c0/7aeb7362d8b2fb995267c949d3e63120c93a278eeff9205528d49ba6f54e40829afe4f75faea2b96fb2976e3e38c8e918b7dc37d425d343ab509ffe95d20c6f1
   languageName: node
   linkType: hard
 
@@ -5996,6 +6014,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tinkoff/logger@npm:^0.10.518":
+  version: 0.10.518
+  resolution: "@tinkoff/logger@npm:0.10.518"
+  dependencies:
+    "@tinkoff/utils": "npm:^2.1.2"
+    "@tramvai/safe-strings": "npm:^0.7.9"
+    chalk: "npm:^3.0.0"
+    date-fns: "npm:^2.11.0"
+    figures: "npm:^3.2.0"
+    std-env: "npm:^3.7.0"
+    tslib: "npm:^2.4.0"
+  checksum: 10c0/459119891f3a7a43b050a6dabf6522b792b22097a9d3c2b7e9f8882818170bc19bb6da327dafee254748d7173d0f2d9d49175c18d67f5cc7d3ad8cb7dde23a59
+  languageName: node
+  linkType: hard
+
 "@tinkoff/lru-cache-nano@npm:^7.9.0":
   version: 7.9.4
   resolution: "@tinkoff/lru-cache-nano@npm:7.9.4"
@@ -6051,6 +6084,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tinkoff/module-loader-client@npm:0.8.4":
+  version: 0.8.4
+  resolution: "@tinkoff/module-loader-client@npm:0.8.4"
+  dependencies:
+    "@tinkoff/utils": "npm:^2.1.2"
+    tslib: "npm:^2.4.0"
+  checksum: 10c0/f8a1301f9222506b39b32c28032b21db4a60aa3982c83d0ba3bf19508e03de85084bd6b0b81eadfd7ec2ef02eba4f6a1ecc1629a7ecc321c18ac846949599cfc
+  languageName: node
+  linkType: hard
+
+"@tinkoff/module-loader-server@npm:0.9.8":
+  version: 0.9.8
+  resolution: "@tinkoff/module-loader-server@npm:0.9.8"
+  dependencies:
+    "@tinkoff/request-core": "npm:^0.10.0"
+    "@tinkoff/request-plugin-cache-deduplicate": "npm:^0.10.3"
+    "@tinkoff/request-plugin-circuit-breaker": "npm:^0.5.0"
+    "@tinkoff/request-plugin-protocol-http": "npm:0.16.0"
+    "@tinkoff/utils": "npm:^2.1.2"
+    minipass: "npm:^3.1.1"
+    ssri: "npm:^7.1.0"
+    tslib: "npm:^2.4.0"
+    undici: "npm:^7.24.4"
+  checksum: 10c0/26e2fe5e1884a61c0b3b58f3a9e20ad081b732e720b4a01f4d5fdcb10b56c354c51414d66c7bff0cdcdeaa35d07622f8a6bfcfc9da53ef4602a4d71310a2da33
+  languageName: node
+  linkType: hard
+
 "@tinkoff/monkeypatch@npm:6.0.3":
   version: 6.0.3
   resolution: "@tinkoff/monkeypatch@npm:6.0.3"
@@ -6091,6 +6151,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tinkoff/request-cache-utils@npm:^0.10.2":
+  version: 0.10.2
+  resolution: "@tinkoff/request-cache-utils@npm:0.10.2"
+  dependencies:
+    "@tinkoff/utils": "npm:^2.0.0"
+    tslib: "npm:^2.1.3"
+  peerDependencies:
+    "@tinkoff/request-core": 0.x
+  checksum: 10c0/cf7231024ef5ec4ca8e344b1dbe537a02b432d4c0449a4ed1849fb40462c19dff3d36edc3f8fd5c0f906fcd05d879468d232d4017314271bb7b9b4720c44eff2
+  languageName: node
+  linkType: hard
+
 "@tinkoff/request-core@npm:^0.10.0":
   version: 0.10.0
   resolution: "@tinkoff/request-core@npm:0.10.0"
@@ -6098,6 +6170,31 @@ __metadata:
     "@tinkoff/utils": "npm:^2.0.0"
     tslib: "npm:^2.1.3"
   checksum: 10c0/3a567b173aa7ba9dc8543c42c3792b0c63ff2986b04bb9b84e1abb80f9ac0328da70aa4f33ce6da0db4a7aef47db277bb7b7339e2f7b4df119f07bd8858d7334
+  languageName: node
+  linkType: hard
+
+"@tinkoff/request-plugin-cache-deduplicate@npm:^0.10.3":
+  version: 0.10.3
+  resolution: "@tinkoff/request-plugin-cache-deduplicate@npm:0.10.3"
+  dependencies:
+    "@tinkoff/request-cache-utils": "npm:^0.10.2"
+    "@tinkoff/utils": "npm:^2.0.0"
+    tslib: "npm:^2.1.3"
+  peerDependencies:
+    "@tinkoff/request-core": 0.x
+  checksum: 10c0/e0cb622e865df71100f2ea18e666f4694e1a64c5ad7f382b28b19fe998bd119b390def637284712c0dca271dfdeead9627b2332f9036f721ac604e175b5396fa
+  languageName: node
+  linkType: hard
+
+"@tinkoff/request-plugin-circuit-breaker@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "@tinkoff/request-plugin-circuit-breaker@npm:0.5.0"
+  dependencies:
+    "@tinkoff/utils": "npm:^2.0.0"
+    tslib: "npm:^2.1.3"
+  peerDependencies:
+    "@tinkoff/request-core": 0.x
+  checksum: 10c0/d444617aecc1432ad45d3c55b6aa9519d75ded1b871bdd0a2d17eb678b61d5fbb787b02e0b76c2be69bbcb0e890718836653826edc439323fc7bdd61e4310091
   languageName: node
   linkType: hard
 
@@ -6156,6 +6253,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tinkoff/router@npm:0.6.228":
+  version: 0.6.228
+  resolution: "@tinkoff/router@npm:0.6.228"
+  dependencies:
+    "@tinkoff/hook-runner": "npm:0.8.4"
+    "@tinkoff/react-hooks": "npm:0.5.4"
+    "@tinkoff/url": "npm:0.12.4"
+    "@tinkoff/utils": "npm:^2.1.2"
+    use-sync-external-store: "npm:^1.4.0"
+  peerDependencies:
+    "@tramvai/core": 6.80.26
+    react: ">=16.14.0"
+    tslib: ^2.4.0
+  checksum: 10c0/50574bf6f7507aa68e750515eb329bc5584b63bb0c1ecbe3d4d9aab93bd1db3cb58bb00c12ee4c180c8060b696448b8d67ad475df1fc540d67ac4adeb19ec6d0
+  languageName: node
+  linkType: hard
+
 "@tinkoff/terminus@npm:0.5.5":
   version: 0.5.5
   resolution: "@tinkoff/terminus@npm:0.5.5"
@@ -6192,6 +6306,22 @@ __metadata:
     "@tramvai/cli": 6.79.33
     "@types/ua-parser-js": ^0.7.33
   checksum: 10c0/18db7d245653f8701a92203af9003276d5f2fb2a1498dfba1e2d0e4da1a836149be017617f35fd25a229c13c5191a9ec5adeaff272817ec2e17f8b892ba83a32
+  languageName: node
+  linkType: hard
+
+"@tinkoff/user-agent@npm:0.8.228":
+  version: 0.8.228
+  resolution: "@tinkoff/user-agent@npm:0.8.228"
+  dependencies:
+    "@tinkoff/browserslist-config": "npm:0.6.5"
+    "@tinkoff/utils": "npm:^2.1.2"
+    browserslist: "npm:^4.28.1"
+    tslib: "npm:^2.4.0"
+    ua-parser-js: "npm:0.7.33"
+  peerDependencies:
+    "@tramvai/cli": 6.80.26
+    "@types/ua-parser-js": ^0.7.33
+  checksum: 10c0/c9b6d41bf70155bc1e32d9e400b08d50fad2c8d5e227a9e912c9b1d67c1c4b9a64986494438dc4427eb2f2da68c637bfeda69b21c0f6144729b1907950f195f2
   languageName: node
   linkType: hard
 
@@ -6291,6 +6421,21 @@ __metadata:
     "@tinkoff/dippy": 0.12.9
     react: ">=16.14.0"
   checksum: 10c0/763aa416a2c7a4263fa4fba8b0b56ba80a901f4dc08986364251a5bb0d39fc600005423b6dbb940529f49e24547e57bb7ebdbf0071f30d65437ec7e6520843dc
+  languageName: node
+  linkType: hard
+
+"@tramvai/child-app-core@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/child-app-core@npm:6.80.26"
+  dependencies:
+    "@tramvai/core": "npm:6.80.26"
+    "@tramvai/react": "npm:6.80.26"
+    "@tramvai/tokens-child-app": "npm:6.80.26"
+    "@tramvai/tokens-render": "npm:6.80.26"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    react: ">=16.14.0"
+  checksum: 10c0/7fb0dce006bc6d6a6f56dee22ba026fc5adaae2cd157a696552b3d8da6b5982769793d0744fd8434af68291d22ccc5fb881b1452cdbdf0069407103783115c1c
   languageName: node
   linkType: hard
 
@@ -6474,6 +6619,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tramvai/core@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/core@npm:6.80.26"
+  dependencies:
+    "@tinkoff/dippy": "npm:^1.0.0"
+    "@tinkoff/utils": "npm:^2.1.2"
+    "@tramvai/tokens-common": "npm:6.80.26"
+    "@tramvai/tokens-core": "npm:6.80.26"
+    "@tramvai/types-actions-state-context": "npm:6.80.26"
+    tslib: "npm:^2.4.0"
+  peerDependencies:
+    "@tramvai/react": 6.80.26
+    jscodeshift: ^0.7.0
+  checksum: 10c0/12c9962477199ae0050ac53c1ca6b9a1a64491e42969bb5bbe57f1302173a93bc157404ec24704017854bd171d102903aac92ceb855a94aaaf37b9f78a912e2c
+  languageName: node
+  linkType: hard
+
 "@tramvai/experiments@npm:6.79.33":
   version: 6.79.33
   resolution: "@tramvai/experiments@npm:6.79.33"
@@ -6482,6 +6644,17 @@ __metadata:
     "@tramvai/cli": 6.79.33
     tslib: ^2.4.0
   checksum: 10c0/f8950eed72b0e0b948f35de827c602e9d75503eab0d6e33f8fdb2f3d472375f852c83770bed15a2860b04e7f4530fa1dba469bc34aef73cc001ae9c74182ef64
+  languageName: node
+  linkType: hard
+
+"@tramvai/experiments@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/experiments@npm:6.80.26"
+  peerDependencies:
+    "@tinkoff/router": 0.6.228
+    "@tramvai/cli": 6.80.26
+    tslib: ^2.4.0
+  checksum: 10c0/7e65af482cb4b0434f86be681ea5e08c4eaf722037a7a35ab459e50d08829e5242c904d599b63c9b794084ebd4b2697e7b8d612315c9f669a9b20109f86fa5fb
   languageName: node
   linkType: hard
 
@@ -6500,6 +6673,41 @@ __metadata:
     "@tramvai/tokens-http-client": 6.79.33
     tslib: ^2.4.0
   checksum: 10c0/5552ec4d900d7e8c95e99fd915a94e1da8a7b6e35e407af131aa4502effa82dee761c0169e2533959caff9ec21eda7c62681c4fa4432fa0cb540577e79d34a75
+  languageName: node
+  linkType: hard
+
+"@tramvai/module-child-app@npm:^6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/module-child-app@npm:6.80.26"
+  dependencies:
+    "@loadable/server": "npm:^5.15.0"
+    "@tinkoff/env-validators": "npm:0.5.4"
+    "@tinkoff/errors": "npm:0.7.4"
+    "@tinkoff/logger": "npm:^0.10.518"
+    "@tinkoff/module-loader-client": "npm:0.8.4"
+    "@tinkoff/module-loader-server": "npm:0.9.8"
+    "@tinkoff/url": "npm:0.12.4"
+    "@tramvai/child-app-core": "npm:6.80.26"
+    "@tramvai/module-common": "npm:6.80.26"
+    "@tramvai/module-router": "npm:6.80.26"
+    "@tramvai/safe-strings": "npm:0.9.3"
+    "@tramvai/tokens-child-app": "npm:6.80.26"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    "@tinkoff/router": 0.6.228
+    "@tinkoff/utils": ^2.1.2
+    "@tramvai/core": 6.80.26
+    "@tramvai/react": 6.80.26
+    "@tramvai/state": 6.80.26
+    "@tramvai/tokens-common": 6.80.26
+    "@tramvai/tokens-render": 6.80.26
+    "@tramvai/tokens-router": 6.80.26
+    object-assign: ^4.1.1
+    react: ">=16.14.0"
+    react-dom: ">=16.14.0"
+    semver: ^7.3.8
+    tslib: ^2.4.0
+  checksum: 10c0/ecc49acf974e9bbf7e2055a408bf5daffd9bae5b5f77434043f5545d81c9bef697b28218914a0fa85be1f838c7aacfeef82f088ff35b8bfd9d043653576e5f33
   languageName: node
   linkType: hard
 
@@ -6526,6 +6734,32 @@ __metadata:
     react-dom: ">=16.14.0"
     tslib: ^2.4.0
   checksum: 10c0/520538b87727616eaea974c7c7e7cda8eeda5dfb74a4e274242857976feae948ea98d0a7eec8c542cb79253f18b0f1b0e7591542291abac329033172950d5d19
+  languageName: node
+  linkType: hard
+
+"@tramvai/module-client-hints@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/module-client-hints@npm:6.80.26"
+  dependencies:
+    "@tinkoff/env-validators": "npm:0.5.4"
+    "@tinkoff/user-agent": "npm:0.8.228"
+    "@tinkoff/utils": "npm:^2.1.2"
+    "@tramvai/module-metrics": "npm:6.80.26"
+    "@tramvai/safe-strings": "npm:0.9.3"
+    "@tramvai/tokens-child-app": "npm:6.80.26"
+    "@tramvai/tokens-common": "npm:6.80.26"
+    "@tramvai/tokens-cookie": "npm:6.80.26"
+    "@tramvai/tokens-render": "npm:6.80.26"
+    user-agent-data-types: "npm:^0.3.1"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    "@tinkoff/logger": ^0.10.518
+    "@tramvai/core": 6.80.26
+    "@tramvai/state": 6.80.26
+    react: ">=16.14.0"
+    react-dom: ">=16.14.0"
+    tslib: ^2.4.0
+  checksum: 10c0/7f7a4e3107657eab5169a64fcaf12886df154fc3c3c860e1f68148cf28afb1ec5ffc9f2bb40a8170640e347da8cd61de9f99e0ca27ab0ca3612b1d66b9fb03ad
   languageName: node
   linkType: hard
 
@@ -6568,6 +6802,45 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tramvai/module-common@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/module-common@npm:6.80.26"
+  dependencies:
+    "@akashbabu/lfu-cache": "npm:1.0.2"
+    "@tinkoff/errors": "npm:0.7.4"
+    "@tinkoff/hook-runner": "npm:0.8.4"
+    "@tinkoff/lru-cache-nano": "npm:^7.9.0"
+    "@tinkoff/pubsub": "npm:0.9.3"
+    "@tinkoff/url": "npm:0.12.4"
+    "@tramvai/experiments": "npm:6.80.26"
+    "@tramvai/module-cookie": "npm:6.80.26"
+    "@tramvai/module-environment": "npm:6.80.26"
+    "@tramvai/module-log": "npm:6.80.26"
+    "@tramvai/safe-strings": "npm:0.9.3"
+    "@tramvai/tokens-child-app": "npm:6.80.26"
+    "@tramvai/tokens-common": "npm:6.80.26"
+    "@tramvai/tokens-core-private": "npm:6.80.26"
+    "@tramvai/tokens-metrics": "npm:6.80.26"
+    "@tramvai/tokens-render": "npm:6.80.26"
+    "@tramvai/tokens-router": "npm:6.80.26"
+    "@tramvai/tokens-server-private": "npm:6.80.26"
+    "@tramvai/types-actions-state-context": "npm:6.80.26"
+    hoist-non-react-statics: "npm:^3.3.1"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    "@tinkoff/utils": ^2.1.2
+    "@tramvai/cli": 6.80.26
+    "@tramvai/core": 6.80.26
+    "@tramvai/papi": 6.80.26
+    "@tramvai/react": 6.80.26
+    "@tramvai/state": 6.80.26
+    "@tramvai/tokens-server": 6.80.26
+    react: ">=16.14.0"
+    tslib: ^2.4.0
+  checksum: 10c0/a815a0479897b86c241d95cca7f5b13b274a1447c11c55730ed6868c416265d9d66155f67924ad85d7e3f0666258dc8514aaef9e5fe48a81e6db35357371f7a3
+  languageName: node
+  linkType: hard
+
 "@tramvai/module-cookie@npm:6.79.33":
   version: 6.79.33
   resolution: "@tramvai/module-cookie@npm:6.79.33"
@@ -6584,6 +6857,25 @@ __metadata:
     "@tramvai/tokens-common": 6.79.33
     tslib: ^2.4.0
   checksum: 10c0/c47ce5a9a5de7e91f76c781a42453ec3517f00f78b6e3e7a67dcb4500fd76f29c2b82ca553c7093c8ca33182fe4848bba42b76d8a55885c3929c449a206a6c17
+  languageName: node
+  linkType: hard
+
+"@tramvai/module-cookie@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/module-cookie@npm:6.80.26"
+  dependencies:
+    "@tinkoff/browser-cookies": "npm:6.0.3"
+    "@tramvai/module-client-hints": "npm:6.80.26"
+    "@tramvai/tokens-cookie": "npm:6.80.26"
+    cookie: "npm:^0.5.0"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    "@tinkoff/utils": ^2.1.2
+    "@tramvai/core": 6.80.26
+    "@tramvai/state": 6.80.26
+    "@tramvai/tokens-common": 6.80.26
+    tslib: ^2.4.0
+  checksum: 10c0/5a06813002ed0f70cecb3c11e2596c02fc0e51250b8569def980acc7789c9033425384a400243cfa2bfed40fd0256956522af7662553cbc1f814a43e876f3148
   languageName: node
   linkType: hard
 
@@ -6605,6 +6897,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tramvai/module-environment@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/module-environment@npm:6.80.26"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    "@tinkoff/utils": ^2.1.2
+    "@tramvai/core": 6.80.26
+    "@tramvai/papi": 6.80.26
+    "@tramvai/state": 6.80.26
+    "@tramvai/tokens-common": 6.80.26
+    "@tramvai/tokens-server": 6.80.26
+    react: ">=16.14.0"
+    react-dom: ">=16.14.0"
+    tslib: ^2.4.0
+  checksum: 10c0/9f2014908add246f3cc53760d40e27192a0f5568d34016899fd3ce6a953659b92916dc3cad6c42f9398b4a5c2e70a7c06fc3997b8f6c9a0f12ab1f4d66b7cfd3
+  languageName: node
+  linkType: hard
+
 "@tramvai/module-log@npm:6.79.33":
   version: 6.79.33
   resolution: "@tramvai/module-log@npm:6.79.33"
@@ -6621,6 +6931,25 @@ __metadata:
     std-env: ^3.7.0
     tslib: ^2.4.0
   checksum: 10c0/a4881471374577c5bb8382d6f1d4ef2b4fc124adfbced727ba86c363abe5c4cceb58810f0343da27b9d5d42d13d578295bfbcee6a55807abda1556ac3ea5d14e
+  languageName: node
+  linkType: hard
+
+"@tramvai/module-log@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/module-log@npm:6.80.26"
+  dependencies:
+    "@tinkoff/logger": "npm:^0.10.518"
+  peerDependencies:
+    "@tinkoff/utils": ^2.1.2
+    "@tramvai/core": 6.80.26
+    "@tramvai/module-environment": 6.80.26
+    "@tramvai/papi": 6.80.26
+    "@tramvai/state": 6.80.26
+    "@tramvai/tokens-common": 6.80.26
+    "@tramvai/tokens-server": 6.80.26
+    std-env: ^3.7.0
+    tslib: ^2.4.0
+  checksum: 10c0/1f06f45f560e4efddeee09e98468c1b71caf6bdadb5ca457b6e64e743fc2f3282cd52bd3dee608df66d85eea9a084db3226163a4717975072878c54b1dd29915
   languageName: node
   linkType: hard
 
@@ -6650,6 +6979,35 @@ __metadata:
   peerDependencies:
     tslib: ^2.4.0
   checksum: 10c0/89611bfe9d378b31b222952f2cacc654605706e1488f55ac877f675ab318d9fe980166aceba7506ff4fc56db1f0d8c2b69ca8a12e7d2e8de18b6c95dbd58baf0
+  languageName: node
+  linkType: hard
+
+"@tramvai/module-metrics@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/module-metrics@npm:6.80.26"
+  dependencies:
+    "@tinkoff/browser-timings": "npm:0.14.3"
+    "@tinkoff/logger": "npm:^0.10.518"
+    "@tinkoff/measure-fastify-requests": "npm:0.5.5"
+    "@tinkoff/metrics-noop": "npm:6.0.3"
+    "@tinkoff/monkeypatch": "npm:6.0.3"
+    "@tinkoff/url": "npm:0.12.4"
+    "@tinkoff/utils": "npm:^2.1.2"
+    "@tramvai/core": "npm:6.80.26"
+    "@tramvai/papi": "npm:6.80.26"
+    "@tramvai/state": "npm:6.80.26"
+    "@tramvai/tokens-common": "npm:6.80.26"
+    "@tramvai/tokens-core-private": "npm:6.80.26"
+    "@tramvai/tokens-http-client": "npm:6.80.26"
+    "@tramvai/tokens-metrics": "npm:6.80.26"
+    "@tramvai/tokens-router": "npm:6.80.26"
+    "@tramvai/tokens-server": "npm:6.80.26"
+    "@tramvai/tokens-server-private": "npm:6.80.26"
+    prom-client: "npm:^14.2.0"
+    undici: "npm:^7.24.4"
+  peerDependencies:
+    tslib: ^2.4.0
+  checksum: 10c0/0cf2e348e15daddb6264b554561efd0b209d1f5dc78b0a9343dbc8d02435b3c8e58427e13342076b188bc784a51282a472f567b60ee3382f3a9f4589e4bc3e3f
   languageName: node
   linkType: hard
 
@@ -6743,6 +7101,39 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tramvai/module-router@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/module-router@npm:6.80.26"
+  dependencies:
+    "@tinkoff/errors": "npm:0.7.4"
+    "@tinkoff/hook-runner": "npm:0.8.4"
+    "@tinkoff/router": "npm:0.6.228"
+    "@tinkoff/url": "npm:0.12.4"
+    "@tramvai/experiments": "npm:6.80.26"
+    "@tramvai/react": "npm:6.80.26"
+    "@tramvai/safe-strings": "npm:0.9.3"
+    "@tramvai/tokens-child-app": "npm:6.80.26"
+    "@tramvai/tokens-render": "npm:6.80.26"
+    "@tramvai/tokens-router": "npm:6.80.26"
+    "@tramvai/tokens-server": "npm:6.80.26"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    "@tinkoff/utils": ^2.1.2
+    "@tramvai/cli": 6.80.26
+    "@tramvai/core": 6.80.26
+    "@tramvai/module-log": 6.80.26
+    "@tramvai/module-server": 6.80.26
+    "@tramvai/papi": 6.80.26
+    "@tramvai/state": 6.80.26
+    "@tramvai/test-helpers": 6.80.26
+    "@tramvai/test-mocks": 6.80.26
+    "@tramvai/tokens-common": 6.80.26
+    react: "*"
+    tslib: ^2.4.0
+  checksum: 10c0/c38d3a3f2b404721f356c5c26764d4387297268bb01d8d815e09db8d18c8b0c7ffa65a43941b4c333e920d7f7fee48f7259243a34f51648b16b908496ea0fdf0
+  languageName: node
+  linkType: hard
+
 "@tramvai/module-server@npm:6.79.33":
   version: 6.79.33
   resolution: "@tramvai/module-server@npm:6.79.33"
@@ -6793,6 +7184,17 @@ __metadata:
     "@tramvai/tokens-common": "npm:6.79.33"
     tslib: "npm:^2.4.0"
   checksum: 10c0/dea11db4a16e23f22560bc491abcd41d99ea70c86e4dc5ebf531d0ce85026358f1efc27e3fe09d6e0d2660fc98a2e174731dc3b23948ba9a4e994d14e8da5e59
+  languageName: node
+  linkType: hard
+
+"@tramvai/papi@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/papi@npm:6.80.26"
+  dependencies:
+    "@tinkoff/url": "npm:0.12.4"
+    "@tramvai/tokens-common": "npm:6.80.26"
+    tslib: "npm:^2.4.0"
+  checksum: 10c0/bb29f089bdd9cfb1c3cc72d4387c76cc9d0e39d7310eba86b4ce72c83aacf934df067befc014cd44951260b3626511744fcc092c504c4f487f17be94d0edfb31
   languageName: node
   linkType: hard
 
@@ -6945,6 +7347,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tramvai/react@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/react@npm:6.80.26"
+  dependencies:
+    "@loadable/component": "npm:^5.15.2"
+    "@tramvai/types-actions-state-context": "npm:6.80.26"
+    "@types/loadable__component": "npm:^5.13.4"
+    hoist-non-react-statics: "npm:^3.3.0"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    "@tinkoff/url": 0.12.4
+    "@tinkoff/utils": ^2.1.2
+    react: ">=16.14.0"
+    react-dom: ">=16.14.0"
+    tslib: ^2.4.0
+  checksum: 10c0/48d1dd443eab4a88038164ed467eae79eced0a4e3f901e97cbc2de172608def422d93d38f52b3e5ac6aeed7a27c71851f4457bb5afd5a63926c9c0d93947f7a6
+  languageName: node
+  linkType: hard
+
 "@tramvai/safe-strings@npm:0.9.3":
   version: 0.9.3
   resolution: "@tramvai/safe-strings@npm:0.9.3"
@@ -6982,6 +7403,26 @@ __metadata:
     react: ">=16.14.0"
     react-dom: ">=16.14.0"
   checksum: 10c0/535fa5e2090a78a081a9ffffd3ce9846f2bdc98d9db11194e56642312385d557a9ab844f8eb2aa0917797f11352bec4d320db2e97e299419103e8e8c9e2791cd
+  languageName: node
+  linkType: hard
+
+"@tramvai/state@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/state@npm:6.80.26"
+  dependencies:
+    "@tinkoff/react-hooks": "npm:0.5.4"
+    "@tinkoff/utils": "npm:^2.1.2"
+    "@tramvai/types-actions-state-context": "npm:6.80.26"
+    "@types/hoist-non-react-statics": "npm:^3.3.6"
+    invariant: "npm:^2.2.4"
+    react-is: "npm:>=17"
+    tslib: "npm:^2.4.0"
+    use-sync-external-store: "npm:^1.4.0"
+  peerDependencies:
+    hoist-non-react-statics: ^3.3.1
+    react: ">=16.14.0"
+    react-dom: ">=16.14.0"
+  checksum: 10c0/1d33cac7ac4450babd02f4061771956b5d82a4c984902447cf0426b581b775008ddeed3bb5c98096e6bfb63146379a35257ef34bb02e4861a711d6344f99b23a
   languageName: node
   linkType: hard
 
@@ -7138,6 +7579,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tramvai/tokens-child-app@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/tokens-child-app@npm:6.80.26"
+  peerDependencies:
+    "@loadable/server": "*"
+    "@tinkoff/dippy": ^1.0.0
+    "@tinkoff/router": 0.6.228
+    "@tramvai/core": 6.80.26
+    "@tramvai/react": 6.80.26
+    "@tramvai/state": 6.80.26
+    "@tramvai/tokens-common": 6.80.26
+    react: ">=16.14.0"
+  checksum: 10c0/db8368db27f49316ff6a49e3e218eaa0d62068f56ddce17700fab95f240568ee398878270da7891179208981c5750505e4a45511db4042ef8601d1364d8872aa
+  languageName: node
+  linkType: hard
+
 "@tramvai/tokens-common@npm:6.79.33":
   version: 6.79.33
   resolution: "@tramvai/tokens-common@npm:6.79.33"
@@ -7155,12 +7612,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tramvai/tokens-common@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/tokens-common@npm:6.80.26"
+  dependencies:
+    "@tinkoff/url": "npm:0.12.4"
+    "@tramvai/react": "npm:6.80.26"
+    "@tramvai/tokens-core": "npm:6.80.26"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    "@tinkoff/logger": ^0.10.518
+    "@tramvai/types-actions-state-context": 6.80.26
+    react: ">=16.8"
+    tslib: ^2.4.0
+  checksum: 10c0/6feeae6ee4907aeabc2bea2ce07eae0f2284041d59448a074d19ac18295946ab5b70195c29f79151ecb4f6b143c4738e4fc58f18343668707a83acf631e8463d
+  languageName: node
+  linkType: hard
+
 "@tramvai/tokens-cookie@npm:6.79.33":
   version: 6.79.33
   resolution: "@tramvai/tokens-cookie@npm:6.79.33"
   peerDependencies:
     "@tinkoff/dippy": 0.12.9
   checksum: 10c0/9daf869c1d493c12abc3ca397ce088a9d70fee8228529cc1be3b696f5b09947d37d081b9951db128688cac9de09a20fd4a0ee36b962a44b04a01fb1f321a461f
+  languageName: node
+  linkType: hard
+
+"@tramvai/tokens-cookie@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/tokens-cookie@npm:6.80.26"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+  checksum: 10c0/c286be6872b67846fa6d20cedc6f70057d4bad0a80379b74a4d425edb740325a926a044940b864a60557bf0a855f72420c2e7bfad4b0a4e2c41d288f9daaa55a
   languageName: node
   linkType: hard
 
@@ -7176,6 +7659,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tramvai/tokens-core-private@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/tokens-core-private@npm:6.80.26"
+  dependencies:
+    "@tramvai/tokens-core": "npm:6.80.26"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    tslib: ^2.4.0
+  checksum: 10c0/28adc3e256a9533dc1e7f5a9a1ac590a0d0bc69342ddea2c403ff31880f2ab36415f2ade5ae6bd26a48a1819d5b0a321e9ae0e8194186eef5016bca2f18c68fd
+  languageName: node
+  linkType: hard
+
 "@tramvai/tokens-core@npm:6.79.33":
   version: 6.79.33
   resolution: "@tramvai/tokens-core@npm:6.79.33"
@@ -7185,6 +7680,18 @@ __metadata:
     "@tinkoff/dippy": 0.12.9
     tslib: ^2.4.0
   checksum: 10c0/778b9f0638d7f20e49a4ce5a0e182c0e2af0e9860bf86d72009c069c313e21c81a55ee44b973233eef2abe527e648c247a550e923637c066ae1ffc27542ed25f
+  languageName: node
+  linkType: hard
+
+"@tramvai/tokens-core@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/tokens-core@npm:6.80.26"
+  dependencies:
+    "@tramvai/types-actions-state-context": "npm:6.80.26"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    tslib: ^2.4.0
+  checksum: 10c0/546091ba385445efa92186678dfe3d0f428d2bb4024643fed22cd314eea03f368d94aa48d70b48bf60968f4b80cba4b1f1406b70c6e3cd6653940ebddff44873
   languageName: node
   linkType: hard
 
@@ -7198,6 +7705,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tramvai/tokens-http-client@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/tokens-http-client@npm:6.80.26"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    tslib: ^2.4.0
+  checksum: 10c0/527291cfb4b4a88879972fc486bcde18ac2acc3536ea0953dadce3aa9f6b6a651b965b703c78b02f8a1d7270db843954b5381f03bada4a4eb857d68bb6969c5e
+  languageName: node
+  linkType: hard
+
 "@tramvai/tokens-metrics@npm:6.79.33":
   version: 6.79.33
   resolution: "@tramvai/tokens-metrics@npm:6.79.33"
@@ -7207,6 +7724,18 @@ __metadata:
     "@tinkoff/dippy": 0.12.9
     tslib: ^2.4.0
   checksum: 10c0/f3911f6b6da447b4286514570b7958f3c5a61601423c41d50dfb8cc4db87bfea083d28522fb815b8274202e23bc3e04dc3f1b0e0222a2bb16ec9865ccdeed54f
+  languageName: node
+  linkType: hard
+
+"@tramvai/tokens-metrics@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/tokens-metrics@npm:6.80.26"
+  dependencies:
+    prom-client: "npm:^14.2.0"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    tslib: ^2.4.0
+  checksum: 10c0/c98d476ab16c007513b3cc8f137fb0a19e8c10108fb5eb592bc6011ee1d75a9c3c162ee6b7cd4ee0119de10dbe3972ce406738d55265f5fb5bf6b13219cee70e
   languageName: node
   linkType: hard
 
@@ -7223,6 +7752,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tramvai/tokens-render@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/tokens-render@npm:6.80.26"
+  dependencies:
+    "@tinkoff/htmlpagebuilder": "npm:0.9.3"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    react: ">=16.14.0"
+    tslib: ^2.4.0
+  checksum: 10c0/cf32aad38addec4f5f72e6704bff7df65be0818be322e21288bedf2432bfe70c0736b6a539070dc79aa5ee1700115537cb3a66a61545c0dd1640d35b862d3050
+  languageName: node
+  linkType: hard
+
 "@tramvai/tokens-router@npm:6.79.33":
   version: 6.79.33
   resolution: "@tramvai/tokens-router@npm:6.79.33"
@@ -7233,6 +7775,19 @@ __metadata:
     "@tinkoff/dippy": 0.12.9
     tslib: ^2.4.0
   checksum: 10c0/ab82d3a4ebdc310c58289a5289b95650ea703b89701f0c82229702e9d5b99b025f71e40a7e74557291e767874996f1aaf5669c434792bd9db5a200baafbe2dae
+  languageName: node
+  linkType: hard
+
+"@tramvai/tokens-router@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/tokens-router@npm:6.80.26"
+  dependencies:
+    "@tinkoff/router": "npm:0.6.228"
+    "@tramvai/react": "npm:6.80.26"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    tslib: ^2.4.0
+  checksum: 10c0/1a6c3658daaa2fd706b6058174c2cd3aaa32871a552d5f068d14031eaeca4be94f1d2bcf5e651c9a17564061fd8bc896aff2d2bf5bbe87c71078dd898aab2949
   languageName: node
   linkType: hard
 
@@ -7250,6 +7805,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tramvai/tokens-server-private@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/tokens-server-private@npm:6.80.26"
+  dependencies:
+    "@tramvai/papi": "npm:6.80.26"
+  peerDependencies:
+    "@fastify/cookie": ^11.0.2
+    "@tinkoff/dippy": ^1.0.0
+    fastify: ^5.6.2
+    tslib: ^2.4.0
+  checksum: 10c0/5717018512dae72950eb6f4021c214fc900775e50ca0beabaadb5267386a531714ecc145a189635e72cf3759c6e0c75c8b15b01d5a5dc320edbf9f5f17db1b82
+  languageName: node
+  linkType: hard
+
 "@tramvai/tokens-server@npm:6.79.33":
   version: 6.79.33
   resolution: "@tramvai/tokens-server@npm:6.79.33"
@@ -7260,6 +7829,19 @@ __metadata:
     "@tinkoff/dippy": 0.12.9
     tslib: ^2.4.0
   checksum: 10c0/6858eda105b216c4f9cbc98cf8f4bbe4856e2eb58240cdcad85bd0d1947a6adba3a5306482624e7f48f79a627b8ef0bd2fcd8a6d826b9366a6bbcefbc4e30657
+  languageName: node
+  linkType: hard
+
+"@tramvai/tokens-server@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/tokens-server@npm:6.80.26"
+  dependencies:
+    "@tramvai/papi": "npm:6.80.26"
+    "@tramvai/safe-strings": "npm:0.9.3"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+    tslib: ^2.4.0
+  checksum: 10c0/f13237b9098b9152fa6d4a4d8aab885b037450aa8694534e5a9a41a60e1c640f911717e4f494c7a82647da96ad4b5f1c9c63b058a099a4c605c0443608981681
   languageName: node
   linkType: hard
 
@@ -7307,6 +7889,17 @@ __metadata:
   peerDependencies:
     "@tinkoff/dippy": 0.12.9
   checksum: 10c0/df35e221886fd62c35ffb3bf4e0a39c26d38a88af8c026f63547de982dcf1de323ecf0bb449a75394259a5c87f71c7bb61e4253b09da7bc49112cf5ba70a37ba
+  languageName: node
+  linkType: hard
+
+"@tramvai/types-actions-state-context@npm:6.80.26":
+  version: 6.80.26
+  resolution: "@tramvai/types-actions-state-context@npm:6.80.26"
+  dependencies:
+    tslib: "npm:^2.4.0"
+  peerDependencies:
+    "@tinkoff/dippy": ^1.0.0
+  checksum: 10c0/db94bd738fc4d169f002fd61a3b2d41da7790aed930ecb7717a77bf9bc083888582f85e2b080f06ad9a33308a7a71dfca0a5444a65873a2bb73ca26da52abbf6
   languageName: node
   linkType: hard
 
@@ -13423,6 +14016,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"figgy-pudding@npm:^3.5.1":
+  version: 3.5.2
+  resolution: "figgy-pudding@npm:3.5.2"
+  checksum: 10c0/b21c7adaeb8485ef3c50e056b5dc8c3a6461818343aba141e0d7927aad47a0cb9f1d207ffdf494c380cd60d7c848c46a5ce5cb06987d10e9226fcec419c8af90
+  languageName: node
+  linkType: hard
+
 "figures@npm:^2.0.0":
   version: 2.0.0
   resolution: "figures@npm:2.0.0"
@@ -14563,6 +15163,7 @@ __metadata:
     "@tramvai/child-app-core": "npm:^6.79.33"
     "@tramvai/cli": "npm:^6.79.33"
     "@tramvai/core": "npm:^6.79.33"
+    "@tramvai/module-child-app": "npm:^6.80.26"
     "@tramvai/prettier-config": "npm:^1.0.3"
     "@tramvai/react": "npm:^6.79.33"
     "@tramvai/state": "npm:^6.79.33"
@@ -18331,7 +18932,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minipass@npm:^3.0.0":
+"minipass@npm:^3.0.0, minipass@npm:^3.1.1":
   version: 3.3.6
   resolution: "minipass@npm:3.3.6"
   dependencies:
@@ -22333,6 +22934,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ssri@npm:^7.1.0":
+  version: 7.1.1
+  resolution: "ssri@npm:7.1.1"
+  dependencies:
+    figgy-pudding: "npm:^3.5.1"
+    minipass: "npm:^3.1.1"
+  checksum: 10c0/196fbc19cee55bcdce7e18153341d8736ff44521c7b2cb47b3ef7f811a6809bb357f36081c2f8a77f5b082db88770aa41e2abc7b803e18215974a814d91d023d
+  languageName: node
+  linkType: hard
+
 "stable-hash@npm:^0.0.5":
   version: 0.0.5
   resolution: "stable-hash@npm:0.0.5"
@@ -23603,6 +24214,13 @@ __metadata:
   version: 7.24.4
   resolution: "undici@npm:7.24.4"
   checksum: 10c0/cb302e81fadb7f0b7946ab77595715c0961b46a025ccecae79ba599432d0bc8d1e3da4dfe7ff66bc74f115c1b8ff0f099bc4e9bf313db4562da23995872c6d17
+  languageName: node
+  linkType: hard
+
+"undici@npm:^7.24.4":
+  version: 7.25.0
+  resolution: "undici@npm:7.25.0"
+  checksum: 10c0/02a0b45dc14eb91bc488948750232450fe52f27a6b08086d6ac6736bb47908d600fe3a96d346f12eab24729c782e5c2f693bc8e8eca6696d4e4c09b1ed4cb4ec
   languageName: node
   linkType: hard
 
