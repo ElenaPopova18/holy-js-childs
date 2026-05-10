@@ -1,0 +1,49 @@
+{
+  "components": {
+    "background": "color",
+    "panel": {
+      "panelProps": {
+        "color": {
+          "style": ["outline", "color", "shadow", "custom"],
+          "background": "color"
+        },
+        "size": ["s", "m", "l"],
+        "imagePosition": ["left", "right"]
+      },
+      "title": {
+        "text": "text",
+        "size": ["s", "l"],
+        "htmlTag": ["div", "b", "strong", "h1", "h2", "h3", "h4", "h5", "h6"]
+      },
+      "description": {
+        "text": "html",
+        "htmlTag": ["div", "b", "strong", "h1", "h2", "h3", "h4", "h5", "h6"]
+      },
+      "image": {
+        "alt": "text",
+        "title": "text",
+        "image": {
+          "src": "image"
+        },
+        "imageAlign": ["top", "center", "bottom"]
+      },
+      "button": {
+        "active": "boolean",
+        "text": "text",
+        "color": {
+          "style": ["primary", "secondary", "outline", "outlineDark", "outlineLight", "textLink", "custom"],
+          "backgroundColor": "color"
+        },
+        "onClick": {
+          "action": ["goToLink", "goToBlock", "showBlock", "callFormEvent"],
+          "nofollow": "boolean",
+          "url": "url",
+          "targetBlank": "boolean",
+          "title": "text"
+        },
+        "htmlTag": ["div", "b", "strong", "h1", "h2", "h3", "h4", "h5", "h6"]
+      },
+      "href": "url"
+    }
+  }
+}

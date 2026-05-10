@@ -1,0 +1,222 @@
+.container {
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Panel styles */
+.panel {
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.panelOutline {
+  border: 2px solid #007bff;
+}
+
+.panelColor {
+  border: 2px solid #28a745;
+  background-color: #f0fff0;
+}
+
+.panelShadow {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.panelCustom {
+  border: 2px dashed #6f42c1;
+  background-color: #f8f0ff;
+}
+
+/* Size variants */
+.panelS {
+  padding: 10px;
+}
+
+.panelM {
+  padding: 20px;
+}
+
+.panelL {
+  padding: 30px;
+}
+
+/* Image position */
+.imageLeft {
+  flex-direction: row;
+}
+
+.imageRight {
+  flex-direction: row-reverse;
+}
+
+/* Title styles */
+.title {
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.titleS {
+  font-size: 18px;
+}
+
+.titleL {
+  font-size: 28px;
+}
+
+/* Description styles */
+.description {
+  margin-bottom: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Image styles */
+.imageContainer {
+  margin: 16px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.imageTop {
+  align-items: flex-start;
+}
+
+.imageCenter {
+  align-items: center;
+}
+
+.imageBottom {
+  align-items: flex-end;
+}
+
+.imageAlt {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+  text-align: center;
+}
+
+/* Button styles */
+.button {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.buttonPrimary {
+  background-color: #007bff;
+  color: white;
+}
+
+.buttonPrimary:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.buttonSecondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.buttonSecondary:hover:not(:disabled) {
+  background-color: #545b62;
+}
+
+.buttonOutline {
+  background-color: transparent;
+  border: 2px solid #007bff;
+  color: #007bff;
+}
+
+.buttonOutline:hover:not(:disabled) {
+  background-color: #007bff;
+  color: white;
+}
+
+.buttonOutlineDark {
+  background-color: transparent;
+  border: 2px solid #343a40;
+  color: #343a40;
+}
+
+.buttonOutlineDark:hover:not(:disabled) {
+  background-color: #343a40;
+  color: white;
+}
+
+.buttonOutlineLight {
+  background-color: transparent;
+  border: 2px solid #f8f9fa;
+  color: #f8f9fa;
+}
+
+.buttonOutlineLight:hover:not(:disabled) {
+  background-color: #f8f9fa;
+  color: #343a40;
+}
+
+.buttonTextLink {
+  background-color: transparent;
+  color: #007bff;
+  text-decoration: underline;
+  padding: 5px 10px;
+}
+
+.buttonTextLink:hover:not(:disabled) {
+  color: #0056b3;
+}
+
+.buttonCustom {
+  background-color: #6f42c1;
+  color: white;
+}
+
+.buttonCustom:hover:not(:disabled) {
+  background-color: #5a32a3;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.buttonInactive {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Panel content wrapper */
+.panelContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panelContentWithImage {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .panelContentWithImage {
+    flex-direction: column;
+  }
+}
