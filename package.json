@@ -55,6 +55,7 @@
         "@tinkoff/eslint-config-react": "^5.2.0",
         "@tinkoff/eslint-plugin-tramvai": "^0.10.9",
         "@tramvai/cli": "^6.79.33",
+        "@tramvai/module-child-app": "^6.80.26",
         "@tramvai/prettier-config": "^1.0.3",
         "@tramvai/swc-integration": "^6.79.33",
         "@tramvai/test-child-app": "^6.79.33",

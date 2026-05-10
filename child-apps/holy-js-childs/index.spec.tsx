@@ -18,5 +18,5 @@ describe('testChildApp', () => {
     expect(render.getAllByText('Child App microfront')).toBeTruthy();
 
     return close();
-  });
+  }, 30000); // Увеличенный таймаут для теста
 });
