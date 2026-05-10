@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { BigConfMf } from './root';
+import React from 'react';
 
 const meta = {
   title: 'ChildApp/BigConfMf',
@@ -8,6 +9,28 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  decorators: [
+    (Story, context) => (
+      <div style={{ marginBottom: '24px' }}>
+        {context.parameters.testDescription && (
+          <div
+            style={{
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              color: 'white',
+              padding: '12px 16px',
+              borderRadius: '8px',
+              marginBottom: '16px',
+              fontSize: '14px',
+              fontWeight: '500',
+            }}
+          >
+            🧪 <strong>Проверка:</strong> {context.parameters.testDescription}
+          </div>
+        )}
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
     background: {
       control: 'color',
@@ -155,6 +178,14 @@ export const Default: Story = {
 };
 
 export const ShadowPanel: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Панель с тенью (shadow style), белым фоном, позицией изображения справа и кнопкой secondary стиля.',
+      },
+    },
+    testDescription: 'Панель с тенью (shadow style), белым фоном, позицией изображения справа и кнопкой secondary стиля.',
+  },
   args: {
     background: '#e8e8e8',
     panel: {
@@ -197,6 +228,14 @@ export const ShadowPanel: Story = {
 };
 
 export const CustomPanel: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Кастомный стиль панели с пунктирной границей, изображением с srcset и webpSrcset для разных разрешений, кнопка custom стиля.',
+      },
+    },
+    testDescription: 'Кастомный стиль панели с пунктирной границей, изображением с srcset и webpSrcset для разных разрешений, кнопка custom стиля.',
+  },
   args: {
     background: '#f0f0ff',
     panel: {
@@ -247,6 +286,14 @@ export const CustomPanel: Story = {
 };
 
 export const TextLinkButton: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Кнопка в стиле текстовой ссылки (textLink) с атрибутами nofollow и targetBlank для внешних ссылок.',
+      },
+    },
+    testDescription: 'Кнопка в стиле текстовой ссылки (textLink) с атрибутами nofollow и targetBlank для внешних ссылок.',
+  },
   args: {
     panel: {
       color: {
@@ -290,6 +337,14 @@ export const TextLinkButton: Story = {
 };
 
 export const OutlineDarkButton: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Тёмная тема фона (#1a1a2e) с кнопкой outlineDark стиля, изображение расположено снизу.',
+      },
+    },
+    testDescription: 'Тёмная тема фона (#1a1a2e) с кнопкой outlineDark стиля, изображение расположено снизу.',
+  },
   args: {
     background: '#1a1a2e',
     panel: {
@@ -331,6 +386,14 @@ export const OutlineDarkButton: Story = {
 };
 
 export const DisabledButton: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Неактивная кнопка (active: false) — проверяет отображение disabled состояния.',
+      },
+    },
+    testDescription: 'Неактивная кнопка (active: false) — проверяет отображение disabled состояния.',
+  },
   args: {
     panel: {
       color: {
@@ -367,6 +430,14 @@ export const DisabledButton: Story = {
 };
 
 export const NoImage: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Панель без изображения (пустой src) — проверяет отображение только с заголовком, описанием и кнопкой.',
+      },
+    },
+    testDescription: 'Панель без изображения (пустой src) — проверяет отображение только с заголовком, описанием и кнопкой.',
+  },
   args: {
     background: '#fff8e1',
     panel: {
@@ -409,6 +480,14 @@ export const NoImage: Story = {
 };
 
 export const AllButtonStyles: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Все 7 стилей кнопок (primary, secondary, outline, outlineDark, outlineLight, textLink, custom) в одном списке для сравнения визуальных оформлений.',
+      },
+    },
+    testDescription: 'Все 7 стилей кнопок (primary, secondary, outline, outlineDark, outlineLight, textLink, custom) в одном списке для сравнения визуальных оформлений.',
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       {(['primary', 'secondary', 'outline', 'outlineDark', 'outlineLight', 'textLink', 'custom'] as const).map((style) => (

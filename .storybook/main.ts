@@ -4,7 +4,12 @@ import { mergeConfig } from 'vite';
 const config: StorybookConfig = {
   stories: ['../child-apps/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    '@storybook/addon-essentials',
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        docs: true,
+      },
+    },
     '@storybook/addon-links',
     '@storybook/addon-a11y',
     '@chromatic-com/storybook',
@@ -32,7 +37,10 @@ const config: StorybookConfig = {
     options: {},
   },
   typescript: {
-    reactDocgen: false,
+    reactDocgen: 'react-docgen-typescript',
+  },
+  docs: {
+    enabled: true,
   },
   async viteFinal(storybookConfig) {
     return mergeConfig(storybookConfig, {

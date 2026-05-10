@@ -8,6 +8,13 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    docs: {
+      enabled: true,
+      story: {
+        inline: true,
+        iframeHeight: 600,
+      },
+    },
   },
 };
 
