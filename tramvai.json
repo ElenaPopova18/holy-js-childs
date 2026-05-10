@@ -8,6 +8,14 @@
       "postcss": {
         "config": "child-apps/holy-js-childs/postcss"
       }
+    },
+    "big-conf-mf": {
+      "name": "big-conf-mf",
+      "root": "child-apps/big-conf-mf",
+      "type": "child-app",
+      "postcss": {
+        "config": "child-apps/big-conf-mf/postcss"
+      }
     }
   }
 }

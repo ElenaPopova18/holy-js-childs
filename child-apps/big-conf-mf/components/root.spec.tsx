@@ -6,6 +6,22 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { BigConfMf } from './root';
 
+// Тестовые константы
+const TEST_TITLE = 'Тестовый заголовок';
+const TEST_DESCRIPTION = 'Тестовое описание';
+const TEST_BUTTON_TEXT = 'Нажми меня';
+const TEST_BUTTON_INACTIVE = 'Неактивная';
+const TEST_IMAGE_ALT = 'Тестовое изображение';
+const TEST_IMAGE_SRC = 'https://example.com/image.jpg';
+const TEST_LINK_URL = 'https://example.com';
+const TEST_PANEL_LINK = 'https://panel-link.com';
+const TEST_BLOCK_ID = '#block';
+const TEST_EVENT_NAME = 'formSubmit';
+const TEST_LINK_TITLE = 'Link Title';
+const TEST_BACKGROUND_COLOR = '#ff0000';
+const TEST_PANEL_BACKGROUND_COLOR = '#00ff00';
+const TEST_BUTTON_BACKGROUND_COLOR = 'purple';
+
 const basePanel = {
   color: { style: 'outline' as const },
   size: 'm' as const,
@@ -27,18 +43,18 @@ describe('BigConfMf', () => {
       expect(screen.getByText('Панель не настроена')).toBeInTheDocument();
     });
 
-    it('должен рендерить заголовок и описание', () => {
+    it('Блок должен рендерить заголовок и описание', () => {
       render(
         <BigConfMf
           panel={{
             ...basePanel,
-            title: { text: 'Тестовый заголовок', size: 'l', htmlTag: 'h2' },
-            description: { text: 'Тестовое описание', htmlTag: 'div' },
+            title: { text: TEST_TITLE, size: 'l', htmlTag: 'h2' },
+            description: { text: TEST_DESCRIPTION, htmlTag: 'div' },
           }}
         />
       );
-      expect(screen.getByText('Тестовый заголовок')).toBeInTheDocument();
-      expect(screen.getByText('Тестовое описание')).toBeInTheDocument();
+      expect(screen.getByText(TEST_TITLE)).toBeInTheDocument();
+      expect(screen.getByText(TEST_DESCRIPTION)).toBeInTheDocument();
     });
 
     it('должен рендерить кнопку с правильным текстом', () => {
@@ -46,11 +62,11 @@ describe('BigConfMf', () => {
         <BigConfMf
           panel={{
             ...basePanel,
-            button: { active: true, text: 'Нажми меня', color: { style: 'primary' } },
+            button: { active: true, text: TEST_BUTTON_TEXT, color: { style: 'primary' } },
           }}
         />
       );
-      expect(screen.getByRole('button', { name: 'Нажми меня' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: TEST_BUTTON_TEXT })).toBeInTheDocument();
     });
 
     it('должен рендерить неактивную кнопку когда active: false', () => {
@@ -58,11 +74,11 @@ describe('BigConfMf', () => {
         <BigConfMf
           panel={{
             ...basePanel,
-            button: { active: false, text: 'Неактивная', color: { style: 'primary' } },
+            button: { active: false, text: TEST_BUTTON_INACTIVE, color: { style: 'primary' } },
           }}
         />
       );
-      expect(screen.getByRole('button', { name: 'Неактивная' })).toBeDisabled();
+      expect(screen.getByRole('button', { name: TEST_BUTTON_INACTIVE })).toBeDisabled();
     });
 
     it('должен рендерить изображение с правильным alt текстом', () => {
@@ -71,15 +87,15 @@ describe('BigConfMf', () => {
           panel={{
             ...basePanel,
             image: {
-              alt: 'Тестовое изображение',
+              alt: TEST_IMAGE_ALT,
               title: 'Test Image',
-              image: { src: 'https://example.com/image.jpg' },
+              image: { src: TEST_IMAGE_SRC },
               imageAlign: 'center',
             },
           }}
         />
       );
-      expect(screen.getByAltText('Тестовое изображение')).toBeInTheDocument();
+      expect(screen.getByAltText(TEST_IMAGE_ALT)).toBeInTheDocument();
     });
   });
 
@@ -87,12 +103,12 @@ describe('BigConfMf', () => {
     it('должен применять фон контейнера из props.background', () => {
       const { container } = render(
         <BigConfMf
-          background="#ff0000"
+          background={TEST_BACKGROUND_COLOR}
           panel={basePanel}
         />
       );
       const containerElement = container.firstChild as HTMLElement;
-      expect(containerElement).toHaveStyle('background-color: rgb(255, 0, 0)');
+      expect(containerElement).toHaveStyle(`background-color: ${TEST_BACKGROUND_COLOR}`);
     });
 
     it('должен применять фон панели из panel.color.background', () => {
@@ -100,12 +116,12 @@ describe('BigConfMf', () => {
         <BigConfMf
           panel={{
             ...basePanel,
-            color: { style: 'color', background: '#00ff00' },
+            color: { style: 'color', background: TEST_PANEL_BACKGROUND_COLOR },
           }}
         />
       );
       const panelElement = container.querySelector('[class*="panel"]');
-      expect(panelElement).toHaveStyle('background-color: rgb(0, 255, 0)');
+      expect(panelElement).toHaveStyle(`background-color: ${TEST_PANEL_BACKGROUND_COLOR}`);
     });
 
     it('должен применять кастомный фон кнопки из button.color.backgroundColor', () => {
@@ -116,13 +132,13 @@ describe('BigConfMf', () => {
             button: {
               active: true,
               text: 'Кнопка',
-              color: { style: 'custom', backgroundColor: 'purple' },
+              color: { style: 'custom', backgroundColor: TEST_BUTTON_BACKGROUND_COLOR },
             },
           }}
         />
       );
       const buttonElement = container.querySelector('button');
-      expect(buttonElement).toHaveStyle('background-color: purple');
+      expect(buttonElement).toHaveStyle(`background-color: ${TEST_BUTTON_BACKGROUND_COLOR}`);
     });
   });
 
@@ -330,14 +346,14 @@ describe('BigConfMf', () => {
               active: true,
               text: 'Link',
               color: { style: 'primary' },
-              onClick: { action: 'goToLink', url: 'https://example.com' },
+              onClick: { action: 'goToLink', url: TEST_LINK_URL },
               htmlTag: 'a',
             },
           }}
         />
       );
       fireEvent.click(screen.getByRole('link', { name: 'Link' }));
-      expect(window.open).toHaveBeenCalledWith('https://example.com', '_self');
+      expect(window.open).toHaveBeenCalledWith(TEST_LINK_URL, '_self');
     });
 
     it('должен открывать ссылку в новой вкладке при targetBlank', () => {
@@ -349,14 +365,14 @@ describe('BigConfMf', () => {
               active: true,
               text: 'Link',
               color: { style: 'primary' },
-              onClick: { action: 'goToLink', url: 'https://example.com', targetBlank: true },
+              onClick: { action: 'goToLink', url: TEST_LINK_URL, targetBlank: true },
               htmlTag: 'a',
             },
           }}
         />
       );
       fireEvent.click(screen.getByRole('link', { name: 'Link' }));
-      expect(window.open).toHaveBeenCalledWith('https://example.com', '_blank');
+      expect(window.open).toHaveBeenCalledWith(TEST_LINK_URL, '_blank');
     });
 
     it('должен скроллить к блоку при действии goToBlock', () => {
@@ -371,14 +387,14 @@ describe('BigConfMf', () => {
               active: true,
               text: 'Scroll',
               color: { style: 'primary' },
-              onClick: { action: 'goToBlock', url: '#block' },
+              onClick: { action: 'goToBlock', url: TEST_BLOCK_ID },
               htmlTag: 'button',
             },
           }}
         />
       );
       fireEvent.click(screen.getByRole('button', { name: 'Scroll' }));
-      expect(document.querySelector).toHaveBeenCalledWith('#block');
+      expect(document.querySelector).toHaveBeenCalledWith(TEST_BLOCK_ID);
       expect(mockElement.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
     });
 
@@ -394,7 +410,7 @@ describe('BigConfMf', () => {
               active: true,
               text: 'Show',
               color: { style: 'primary' },
-              onClick: { action: 'showBlock', url: '#block' },
+              onClick: { action: 'showBlock', url: TEST_BLOCK_ID },
               htmlTag: 'button',
             },
           }}
@@ -415,14 +431,14 @@ describe('BigConfMf', () => {
               active: true,
               text: 'Form',
               color: { style: 'primary' },
-              onClick: { action: 'callFormEvent', eventName: 'formSubmit' },
+              onClick: { action: 'callFormEvent', eventName: TEST_EVENT_NAME },
               htmlTag: 'button',
             },
           }}
         />
       );
       fireEvent.click(screen.getByRole('button', { name: 'Form' }));
-      expect(consoleSpy).toHaveBeenCalledWith('Form event triggered:', 'formSubmit');
+      expect(consoleSpy).toHaveBeenCalledWith('Form event triggered:', TEST_EVENT_NAME);
       consoleSpy.mockRestore();
     });
 
@@ -456,7 +472,7 @@ describe('BigConfMf', () => {
               active: true,
               text: 'Link',
               color: { style: 'primary' },
-              onClick: { action: 'goToLink', url: 'https://example.com', nofollow: true, noindex: true },
+              onClick: { action: 'goToLink', url: TEST_LINK_URL, nofollow: true, noindex: true },
             },
           }}
         />
@@ -474,7 +490,7 @@ describe('BigConfMf', () => {
               active: true,
               text: 'Link',
               color: { style: 'primary' },
-              onClick: { action: 'goToLink', url: 'https://example.com', targetBlank: true },
+              onClick: { action: 'goToLink', url: TEST_LINK_URL, targetBlank: true },
             },
           }}
         />
@@ -492,13 +508,13 @@ describe('BigConfMf', () => {
               active: true,
               text: 'Link',
               color: { style: 'primary' },
-              onClick: { action: 'goToLink', url: 'https://example.com', title: 'Link Title' },
+              onClick: { action: 'goToLink', url: TEST_LINK_URL, title: TEST_LINK_TITLE },
             },
           }}
         />
       );
       const link = screen.getByRole('link');
-      expect(link).toHaveAttribute('title', 'Link Title');
+      expect(link).toHaveAttribute('title', TEST_LINK_TITLE);
     });
 
     it('должен рендерить как ссылку при наличии href в панели', () => {
@@ -506,7 +522,7 @@ describe('BigConfMf', () => {
         <BigConfMf
           panel={{
             ...basePanel,
-            href: 'https://panel-link.com',
+            href: TEST_PANEL_LINK,
             button: {
               active: true,
               text: 'Panel Link',
@@ -516,7 +532,7 @@ describe('BigConfMf', () => {
         />
       );
       const link = screen.getByRole('link');
-      expect(link).toHaveAttribute('href', 'https://panel-link.com');
+      expect(link).toHaveAttribute('href', TEST_PANEL_LINK);
     });
   });
 

@@ -6130,7 +6130,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tinkoff/eslint-config-react@npm:^5.2.0":
+"@tinkoff/eslint-config-react@npm:^5.2.1":
   version: 5.2.1
   resolution: "@tinkoff/eslint-config-react@npm:5.2.1"
   dependencies:
@@ -6147,7 +6147,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tinkoff/eslint-config@npm:^5.2.0":
+"@tinkoff/eslint-config@npm:^5.2.1":
   version: 5.2.1
   resolution: "@tinkoff/eslint-config@npm:5.2.1"
   dependencies:
@@ -9993,6 +9993,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"big-conf-mf@workspace:child-apps/big-conf-mf":
+  version: 0.0.0-use.local
+  resolution: "big-conf-mf@workspace:child-apps/big-conf-mf"
+  languageName: unknown
+  linkType: soft
+
 "big.js@npm:^5.2.2":
   version: 5.2.2
   resolution: "big.js@npm:5.2.2"
@@ -13378,7 +13384,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.57.0, eslint@npm:^9.0.0":
+"eslint@npm:^9.0.0":
   version: 8.57.1
   resolution: "eslint@npm:8.57.1"
   dependencies:
@@ -15085,8 +15091,8 @@ __metadata:
     "@storybook/react-vite": "npm:^8.6.14"
     "@storybook/test-runner": "npm:^0.24.3"
     "@testing-library/react": "npm:^16.3.2"
-    "@tinkoff/eslint-config": "npm:^5.2.0"
-    "@tinkoff/eslint-config-react": "npm:^5.2.0"
+    "@tinkoff/eslint-config": "npm:^5.2.1"
+    "@tinkoff/eslint-config-react": "npm:^5.2.1"
     "@tinkoff/eslint-plugin-tramvai": "npm:^0.10.9"
     "@tramvai/child-app-core": "npm:^6.79.33"
     "@tramvai/cli": "npm:^6.79.33"
@@ -15106,7 +15112,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^8.0.0"
     "@vitejs/plugin-react": "npm:^6.0.1"
     babel-plugin-istanbul: "npm:8.0.0"
-    eslint: "npm:^8.57.0"
+    eslint: "npm:^9.0.0"
     eslint-plugin-complexity: "npm:^1.0.2"
     eslint-plugin-css-modules: "npm:^2.12.0"
     eslint-plugin-jest: "npm:^29.15.2"

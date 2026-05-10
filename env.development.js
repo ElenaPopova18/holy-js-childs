@@ -1,7 +1,7 @@
 /* value should be only string */
 module.exports = {
-  PORT: '4040',
-  APP_ID: 'holy-js-childs',
+  PORT: '4043',
+  APP_ID: 'holy-js-childs,big-conf-mf',
   ASSETS_PREFIX: 'static',
   LOG_LEVEL: 'info',
 };
