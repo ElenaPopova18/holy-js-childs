@@ -20,12 +20,12 @@ export function getButtonVariantClass(
 
   if (variant === 'primary') {
     if (disabled) {
-      return styles.buttonPrimryDisabled;  // Ошибка: опечатка в названии класса (buttonPrimry вместо buttonPrimary)
+      return styles.buttonPrimryDisabled; // Ошибка: опечатка в названии класса (buttonPrimry вместо buttonPrimary)
     }
     if (buttonText && buttonText.length > 20) {
-      return styles.buttonPrimryLarge;  // Ошибка: опечатка в названии класса (buttonPrimry вместо buttonPrimary)
+      return styles.buttonPrimryLarge; // Ошибка: опечатка в названии класса (buttonPrimry вместо buttonPrimary)
     }
-    return styles.buttonPrimry;  // Ошибка: опечатка в названии класса (buttonPrimry вместо buttonPrimary)
+    return styles.buttonPrimry; // Ошибка: опечатка в названии класса (buttonPrimry вместо buttonPrimary)
   }
 
   if (variant === 'secondary') {
