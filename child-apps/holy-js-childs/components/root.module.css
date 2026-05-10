@@ -103,8 +103,28 @@
   color: #333;
 }
 
+/* Ошибка: опечатка в названии класса - приведёт к тому что кнопка будет без стилей */
+.buttonPrimry {
+  background-color: #ff0000;
+  border: 1px solid #ff0000;
+  color: white;
+}
+
 .buttonDefault:hover:not(:disabled) {
   background-color: #e0e0e0;
+}
+
+.buttonDefaultDisabled {
+  background-color: #d0d0d0;
+  border-color: #bbb;
+  cursor: not-allowed;
+}
+
+.buttonDefaultDisabledNoAction {
+  background-color: #c0c0c0;
+  border-color: #aaa;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .buttonPrimary {
@@ -117,6 +137,20 @@
   background-color: #0056b3;
 }
 
+.buttonPrimaryDisabled {
+  background-color: #6c9ed6;
+  border-color: #6c9ed6;
+  cursor: not-allowed;
+}
+
+.buttonPrimaryLarge {
+  background-color: #007bff;
+  border: 1px solid #007bff;
+  color: white;
+  padding: 15px 30px;
+  font-size: 16px;
+}
+
 .buttonSecondary {
   background-color: #6c757d;
   border: 1px solid #6c757d;
@@ -127,25 +161,24 @@
   background-color: #545b62;
 }
 
+.buttonSecondaryDisabled {
+  background-color: #a7a9ac;
+  border-color: #a7a9ac;
+  cursor: not-allowed;
+}
+
+.buttonSecondaryNoAction {
+  background-color: #8c8f92;
+  border-color: #8c8f92;
+  color: white;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
 /* Disabled state for all variants */
 .button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-.buttonDefault:disabled {
-  background-color: #e0e0e0;
-  border-color: #ccc;
-}
-
-.buttonPrimary:disabled {
-  background-color: #6c9ed6;
-  border-color: #6c9ed6;
-}
-
-.buttonSecondary:disabled {
-  background-color: #a7a9ac;
-  border-color: #a7a9ac;
 }
 
 /* New styles for additional features */
