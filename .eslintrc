@@ -19,16 +19,14 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended",
-        // Раскомментируйте линтеры для css
-        // "plugin:css-modules/recommended",
+        "plugin:css-modules/recommended",
         "plugin:jest/recommended"
     ],
     "plugins": [
         "@typescript-eslint",
         "react",
         "react-hooks",
-        // Раскомментируйте линтеры для css
-        // "css-modules",
+        "css-modules",
         "jest",
         "playwright",
         "complexity"
