@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { within, userEvent } from '@storybook/test';
 import { RootCmp } from './root';
 
 const meta = {
@@ -106,12 +107,98 @@ export const WithClickHandler: Story = {
   },
 };
 
-
-export const FullyCustomized: Story = {
+// История для покрытия лейбла слева
+export const WithLeftCornerLabel: Story = {
   args: {
-    variant: 'primary',
-    title: '🎉 Супер компонент',
-    subtitle: 'Нажми на кнопку и случится магия!',
-    buttonText: 'Призвать ведьму 🧙‍♀️',
+    cornerLabel: 'LEFT',
+    cornerLabelPosition: 'left',
+  },
+};
+
+// История для покрытия лейбла справа
+export const WithRightCornerLabel: Story = {
+  args: {
+    cornerLabel: 'RIGHT',
+    cornerLabelPosition: 'right',
+  },
+};
+
+// История для покрытия секретного сообщения (нужно 6+ кликов)
+export const WithSecretMessage: Story = {
+  args: {
+    showSecretMessage: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = await canvas.findByRole('button');
+
+    // Кликаем 6 раз чтобы показать секретное сообщение
+    for (let i = 0; i < 6; i++) {
+      await userEvent.click(button);
+    }
+  },
+};
+
+// История для покрытия лимита ведьм
+export const WithWitchLimit: Story = {
+  args: {
+    maxWitches: 5,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = await canvas.findByRole('button');
+
+    // Кликаем 6 раз чтобы достичь лимита
+    for (let i = 0; i < 6; i++) {
+      await userEvent.click(button);
+    }
+  },
+};
+
+// История для покрытия celebration mode
+export const WithCelebrationMode: Story = {
+  args: {
+    celebrationMode: true,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = await canvas.findByRole('button');
+
+    // Кликаем 5 раз чтобы сработало празднование
+    for (let i = 0; i < 5; i++) {
+      await userEvent.click(button);
+    }
+  },
+};
+
+// История для покрытия activityLog (нужно подождать 1+ секунду)
+export const WithActivityLog: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = await canvas.findByRole('button');
+
+    // Кликаем один раз
+    await userEvent.click(button);
+
+    // Ждём 1.5 секунды чтобы setInterval сработал
+    await new Promise((resolve) => {
+      setTimeout(resolve, 1500);
+    });
+  },
+};
+
+// История для покрытия onButtonClick callback
+export const WithClickCallback: Story = {
+  args: {
+    onButtonClick: () => {
+      console.log('Callback вызван!');
+    },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = await canvas.findByRole('button');
+
+    // Кликаем
+    await userEvent.click(button);
   },
 };
