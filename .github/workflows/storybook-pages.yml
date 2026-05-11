@@ -47,8 +47,6 @@
 #       - name: Deploy
 #         id: deployment
 #         uses: actions/deploy-pages@v4
-
-
 name: Deploy Storybook
 
 on:
@@ -86,6 +84,9 @@ jobs:
 
       - name: Build Storybook
         run: yarn build-storybook
+
+      - name: Install Playwright browsers
+        run: yarn playwright install --with-deps
 
       - name: Build Storybook coverage report
         run: yarn test-storybook:coverage
