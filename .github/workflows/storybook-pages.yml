@@ -1,3 +1,54 @@
+# name: Deploy Storybook
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+
+#     environment:
+#       name: github-pages
+#       url: ${{ steps.deployment.outputs.page_url }}
+
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+
+#       - name: Setup Node
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 22
+
+#       - name: Enable Corepack
+#         run: corepack enable
+
+#       - name: Install deps
+#         run: yarn install
+
+#       - name: Build Storybook
+#         run: yarn build-storybook
+
+#       - name: Setup Pages
+#         uses: actions/configure-pages@v5
+
+#       - name: Upload artifact
+#         uses: actions/upload-pages-artifact@v3
+#         with:
+#           path: storybook-static
+
+#       - name: Deploy
+#         id: deployment
+#         uses: actions/deploy-pages@v4
+
+
 name: Deploy Storybook
 
 on:
@@ -35,6 +86,14 @@ jobs:
 
       - name: Build Storybook
         run: yarn build-storybook
+
+      - name: Build Storybook coverage report
+        run: yarn test-storybook:coverage
+
+      - name: Copy coverage report to Storybook static
+        run: |
+          mkdir -p storybook-static/coverage
+          cp -R coverage/storybook/html/. storybook-static/coverage/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
