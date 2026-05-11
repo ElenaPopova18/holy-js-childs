@@ -6,7 +6,18 @@ type ColorStyle = 'outline' | 'color' | 'shadow' | 'custom';
 type Size = 's' | 'm' | 'l';
 type ImagePosition = 'left' | 'right';
 type TitleSize = 's' | 'l';
-type HtmlTag = 'div' | 'b' | 'strong' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+type HtmlTag =
+  | 'div'
+  | 'b'
+  | 'strong'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'a'
+  | 'button';
 type ButtonStyle =
   | 'primary'
   | 'secondary'
@@ -199,13 +210,22 @@ function renderHtmlTag(
   content: React.ReactNode,
   className?: string
 ): React.ReactNode {
-  const Tag = tag || 'div';
+  const Tag = (tag || 'div') as
+    | 'div'
+    | 'b'
+    | 'strong'
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6';
   return <Tag className={className}>{content}</Tag>;
 }
 
 function buildSrcSet(
   srcset: ImageSrcset[] | undefined,
-  type: 'src' | 'webp'
+  _type?: string
 ): string {
   if (!srcset || srcset.length === 0) return '';
   return srcset.map((item) => `${item.src} ${item.condition}`).join(', ');
@@ -274,10 +294,12 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
           break;
         case 'callFormEvent':
           if (eventName) {
+            // eslint-disable-next-line no-console
             console.log('Form event triggered:', eventName);
           }
           break;
         default:
+          // eslint-disable-next-line no-console
           console.log('Button clicked with action:', action);
       }
     }
@@ -298,11 +320,15 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
           className={buttonClasses}
           style={buttonStyle}
           target={button.onClick?.targetBlank ? '_blank' : undefined}
-          rel={
-            button.onClick?.nofollow || button.onClick?.noindex
-              ? 'nofollow noindex'
-              : undefined
-          }
+          rel={(() => {
+            if (button.onClick?.targetBlank) {
+              return 'noreferrer noopener';
+            }
+            if (button.onClick?.nofollow || button.onClick?.noindex) {
+              return 'nofollow noindex';
+            }
+            return undefined;
+          })()}
           title={button.onClick?.title}
           onClick={(e) => {
             e.preventDefault();
