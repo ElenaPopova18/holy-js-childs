@@ -9,7 +9,8 @@ export interface RootCmpProps {
   onButtonClick?: () => void;
   variant?: 'default' | 'primary' | 'secondary';
   disabled?: boolean;
-  backgroundColor?: 'light' | 'dark';
+  cornerLabel?: string;
+  cornerLabelPosition?: 'left' | 'right';
   showSecretMessage?: boolean;
   maxWitches?: number;
   celebrationMode?: boolean;
@@ -22,7 +23,8 @@ export function RootCmp({
   onButtonClick,
   variant = 'default',
   disabled = false,
-  backgroundColor = 'light',
+  cornerLabel,
+  cornerLabelPosition,
   showSecretMessage = false,
   maxWitches = 10,
   celebrationMode = false,
@@ -36,8 +38,15 @@ export function RootCmp({
   const [activityLog, setActivityLog] = useState<string[]>([]);
   const [witches, setWitches] = useState<string[]>([]);
 
-  const bgClass =
-    backgroundColor === 'dark' ? styles.containerDark : styles.containerLight;
+  // Вычисляем класс лейбла только когда лейбл передан
+  // Это нужно чтобы обе ветки (left/right) были не покрыты в coverage
+  // когда нет сторисов с cornerLabel
+  const getCornerLabelClass = () => {
+    if (cornerLabelPosition === 'right') {
+      return styles.cornerLabelRight;
+    }
+    return styles.cornerLabelLeft;
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -59,7 +68,12 @@ export function RootCmp({
   };
 
   return (
-    <div className={`${styles.container} ${bgClass}`}>
+    <div className={styles.container}>
+      {cornerLabel && (
+        <div className={`${styles.cornerLabel} ${getCornerLabelClass()}`}>
+          {cornerLabel}
+        </div>
+      )}
       <h2 className={styles.title}>{title}</h2>
       <p className={styles.subtitle}>{subtitle}</p>
 
