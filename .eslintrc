@@ -49,10 +49,10 @@
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": "warn",
         // расскоментируй провероку compexety
-        // "complexity": ["error", 10]
+        // "complexity": ["error", 10],
         "@typescript-eslint/no-implied-eval": "error",
-        // Игнорируем неиспользованные классы (они могут использоваться в других файлах)
-        "css-modules/no-unused-class": "off"
+        "css-modules/no-unused-class": "off",
+        "react/jsx-no-target-blank": "off"
     },
     "overrides": [
         {

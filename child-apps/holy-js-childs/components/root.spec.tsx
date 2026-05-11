@@ -2,14 +2,23 @@
  * @jest-environment jsdom
  */
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { RootCmp } from './root';
+
+// Мокаем setInterval для тестов
+beforeAll(() => {
+  jest.useFakeTimers();
+});
+
+afterAll(() => {
+  jest.useRealTimers();
+});
 
 describe('RootCmp', () => {
   it('должен рендериться с заголовком Привет', () => {
     render(<RootCmp />);
-    expect(screen.getByText('Привет!')).toBeInTheDocument();
+    expect(screen.getByText('Привет!!!')).toBeInTheDocument();
   });
 
   it('должен показывать счётчик кликов равный 0 изначально', () => {
@@ -62,5 +71,18 @@ describe('RootCmp', () => {
     const { container } = render(<RootCmp backgroundColor="dark" />);
     const div = container.firstChild as HTMLElement;
     expect(div).toBeInTheDocument();
+  });
+
+  it('должен показывать лог активности после срабатывания таймера', () => {
+    render(<RootCmp />);
+    // Проматываем время на 1 секунду
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    expect(screen.getByText(/Активность/)).toBeInTheDocument();
+    expect(
+      screen.queryByText(/Кликни на кнопку — появится лог/)
+    ).not.toBeInTheDocument();
   });
 });
