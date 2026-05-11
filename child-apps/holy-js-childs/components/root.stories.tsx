@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { RootCmp } from './root';
 
@@ -105,7 +104,6 @@ export const WithClickHandler: Story = {
     },
   },
 };
-
 
 export const FullyCustomized: Story = {
   args: {
