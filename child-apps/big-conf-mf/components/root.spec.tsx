@@ -28,7 +28,12 @@ const basePanel = {
   imagePosition: 'left' as const,
   title: { text: 'Title', size: 'l' as const, htmlTag: 'h2' as const },
   description: { text: 'Description', htmlTag: 'div' as const },
-  image: { alt: '', title: '', image: { src: '' }, imageAlign: 'center' as const },
+  image: {
+    alt: '',
+    title: '',
+    image: { src: '' },
+    imageAlign: 'center' as const,
+  },
   button: {
     active: true,
     text: 'Кнопка',
@@ -62,11 +67,17 @@ describe('BigConfMf', () => {
         <BigConfMf
           panel={{
             ...basePanel,
-            button: { active: true, text: TEST_BUTTON_TEXT, color: { style: 'primary' } },
+            button: {
+              active: true,
+              text: TEST_BUTTON_TEXT,
+              color: { style: 'primary' },
+            },
           }}
         />
       );
-      expect(screen.getByRole('button', { name: TEST_BUTTON_TEXT })).toBeInTheDocument();
+      expect(
+        screen.getByRole('button', { name: TEST_BUTTON_TEXT })
+      ).toBeInTheDocument();
     });
 
     it('должен рендерить неактивную кнопку когда active: false', () => {
@@ -74,11 +85,17 @@ describe('BigConfMf', () => {
         <BigConfMf
           panel={{
             ...basePanel,
-            button: { active: false, text: TEST_BUTTON_INACTIVE, color: { style: 'primary' } },
+            button: {
+              active: false,
+              text: TEST_BUTTON_INACTIVE,
+              color: { style: 'primary' },
+            },
           }}
         />
       );
-      expect(screen.getByRole('button', { name: TEST_BUTTON_INACTIVE })).toBeDisabled();
+      expect(
+        screen.getByRole('button', { name: TEST_BUTTON_INACTIVE })
+      ).toBeDisabled();
     });
 
     it('должен рендерить изображение с правильным alt текстом', () => {
@@ -102,13 +119,12 @@ describe('BigConfMf', () => {
   describe('Фоны', () => {
     it('должен применять фон контейнера из props.background', () => {
       const { container } = render(
-        <BigConfMf
-          background={TEST_BACKGROUND_COLOR}
-          panel={basePanel}
-        />
+        <BigConfMf background={TEST_BACKGROUND_COLOR} panel={basePanel} />
       );
       const containerElement = container.firstChild as HTMLElement;
-      expect(containerElement).toHaveStyle(`background-color: ${TEST_BACKGROUND_COLOR}`);
+      expect(containerElement).toHaveStyle(
+        `background-color: ${TEST_BACKGROUND_COLOR}`
+      );
     });
 
     it('должен применять фон панели из panel.color.background', () => {
@@ -121,7 +137,9 @@ describe('BigConfMf', () => {
         />
       );
       const panelElement = container.querySelector('[class*="panel"]');
-      expect(panelElement).toHaveStyle(`background-color: ${TEST_PANEL_BACKGROUND_COLOR}`);
+      expect(panelElement).toHaveStyle(
+        `background-color: ${TEST_PANEL_BACKGROUND_COLOR}`
+      );
     });
 
     it('должен применять кастомный фон кнопки из button.color.backgroundColor', () => {
@@ -132,13 +150,18 @@ describe('BigConfMf', () => {
             button: {
               active: true,
               text: 'Кнопка',
-              color: { style: 'custom', backgroundColor: TEST_BUTTON_BACKGROUND_COLOR },
+              color: {
+                style: 'custom',
+                backgroundColor: TEST_BUTTON_BACKGROUND_COLOR,
+              },
             },
           }}
         />
       );
       const buttonElement = container.querySelector('button');
-      expect(buttonElement).toHaveStyle(`background-color: ${TEST_BUTTON_BACKGROUND_COLOR}`);
+      expect(buttonElement).toHaveStyle(
+        `background-color: ${TEST_BUTTON_BACKGROUND_COLOR}`
+      );
     });
   });
 
@@ -163,82 +186,107 @@ describe('BigConfMf', () => {
   });
 
   describe('Размеры панели', () => {
-    it.each(['s', 'm', 'l'] as const)('должен применять размер панели %s', (size) => {
-      const { container } = render(
-        <BigConfMf
-          panel={{
-            ...basePanel,
-            size,
-          }}
-        />
-      );
-      const panelElement = container.querySelector('[class*="panel"]');
-      expect(panelElement?.className).toContain(`panel${size.toUpperCase()}`);
-    });
+    it.each(['s', 'm', 'l'] as const)(
+      'должен применять размер панели %s',
+      (size) => {
+        const { container } = render(
+          <BigConfMf
+            panel={{
+              ...basePanel,
+              size,
+            }}
+          />
+        );
+        const panelElement = container.querySelector('[class*="panel"]');
+        expect(panelElement?.className).toContain(`panel${size.toUpperCase()}`);
+      }
+    );
   });
 
   describe('Позиции изображения', () => {
-    it.each(['left', 'right'] as const)('должен применять позицию изображения %s', (position) => {
-      const { container } = render(
-        <BigConfMf
-          panel={{
-            ...basePanel,
-            imagePosition: position,
-          }}
-        />
-      );
-      const panelElement = container.querySelector('[class*="panel"]');
-      expect(panelElement?.className).toContain(`image${position.charAt(0).toUpperCase() + position.slice(1)}`);
-    });
+    it.each(['left', 'right'] as const)(
+      'должен применять позицию изображения %s',
+      (position) => {
+        const { container } = render(
+          <BigConfMf
+            panel={{
+              ...basePanel,
+              imagePosition: position,
+            }}
+          />
+        );
+        const panelElement = container.querySelector('[class*="panel"]');
+        expect(panelElement?.className).toContain(
+          `image${position.charAt(0).toUpperCase() + position.slice(1)}`
+        );
+      }
+    );
   });
 
   describe('Размеры заголовка', () => {
-    it.each(['s', 'l'] as const)('должен применять размер заголовка %s', (size) => {
-      const { container } = render(
-        <BigConfMf
-          panel={{
-            ...basePanel,
-            title: { text: 'Title', size, htmlTag: 'h2' },
-          }}
-        />
-      );
-      const titleElement = container.querySelector('.title > *');
-      expect(titleElement?.className).toContain(`title${size.toUpperCase()}`);
-    });
+    it.each(['s', 'l'] as const)(
+      'должен применять размер заголовка %s',
+      (size) => {
+        const { container } = render(
+          <BigConfMf
+            panel={{
+              ...basePanel,
+              title: { text: 'Title', size, htmlTag: 'h2' },
+            }}
+          />
+        );
+        const titleElement = container.querySelector('.title > *');
+        expect(titleElement?.className).toContain(`title${size.toUpperCase()}`);
+      }
+    );
   });
 
   describe('HTML теги заголовка', () => {
-    it.each(['div', 'b', 'strong', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const)(
-      'должен рендерить заголовок как тег %s',
-      (tag) => {
-        render(
-          <BigConfMf
-            panel={{
-              ...basePanel,
-              title: { text: 'Title', size: 'l', htmlTag: tag },
-            }}
-          />
-        );
-        expect(screen.getByText('Title').tagName).toBe(tag.toUpperCase());
-      }
-    );
+    it.each([
+      'div',
+      'b',
+      'strong',
+      'h1',
+      'h2',
+      'h3',
+      'h4',
+      'h5',
+      'h6',
+    ] as const)('должен рендерить заголовок как тег %s', (tag) => {
+      render(
+        <BigConfMf
+          panel={{
+            ...basePanel,
+            title: { text: 'Title', size: 'l', htmlTag: tag },
+          }}
+        />
+      );
+      expect(screen.getByText('Title').tagName).toBe(tag.toUpperCase());
+    });
   });
 
   describe('HTML теги описания', () => {
-    it.each(['div', 'b', 'strong', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const)(
-      'должен рендерить описание как тег %s',
-      (tag) => {
-        render(
-          <BigConfMf
-            panel={{
-              ...basePanel,
-              description: { text: 'Description', htmlTag: tag },
-            }}
-          />
-        );
-        expect(screen.getByText('Description').tagName).toBe(tag.toUpperCase());
-      }
-    );
+    it.each([
+      'div',
+      'b',
+      'strong',
+      'h1',
+      'h2',
+      'h3',
+      'h4',
+      'h5',
+      'h6',
+    ] as const)('должен рендерить описание как тег %s', (tag) => {
+      render(
+        <BigConfMf
+          panel={{
+            ...basePanel,
+            description: { text: 'Description', htmlTag: tag },
+          }}
+        />
+      );
+      expect(screen.getByText('Description').tagName).toBe(tag.toUpperCase());
+    });
   });
 
   describe('Выравнивание изображения', () => {
@@ -258,8 +306,12 @@ describe('BigConfMf', () => {
             }}
           />
         );
-        const imageContainer = container.querySelector('[class*="imageContainer"]');
-        expect(imageContainer?.className).toContain(`image${align.charAt(0).toUpperCase() + align.slice(1)}`);
+        const imageContainer = container.querySelector(
+          '[class*="imageContainer"]'
+        );
+        expect(imageContainer?.className).toContain(
+          `image${align.charAt(0).toUpperCase() + align.slice(1)}`
+        );
       }
     );
   });
@@ -283,7 +335,9 @@ describe('BigConfMf', () => {
         />
       );
       const buttonElement = container.querySelector('button');
-      expect(buttonElement?.className).toContain(`button${style.charAt(0).toUpperCase() + style.slice(1)}`);
+      expect(buttonElement?.className).toContain(
+        `button${style.charAt(0).toUpperCase() + style.slice(1)}`
+      );
     });
   });
 
@@ -365,7 +419,11 @@ describe('BigConfMf', () => {
               active: true,
               text: 'Link',
               color: { style: 'primary' },
-              onClick: { action: 'goToLink', url: TEST_LINK_URL, targetBlank: true },
+              onClick: {
+                action: 'goToLink',
+                url: TEST_LINK_URL,
+                targetBlank: true,
+              },
               htmlTag: 'a',
             },
           }}
@@ -395,7 +453,9 @@ describe('BigConfMf', () => {
       );
       fireEvent.click(screen.getByRole('button', { name: 'Scroll' }));
       expect(document.querySelector).toHaveBeenCalledWith(TEST_BLOCK_ID);
-      expect(mockElement.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
+      expect(mockElement.scrollIntoView).toHaveBeenCalledWith({
+        behavior: 'smooth',
+      });
     });
 
     it('должен показывать блок при действии showBlock', () => {
@@ -417,7 +477,9 @@ describe('BigConfMf', () => {
         />
       );
       fireEvent.click(screen.getByRole('button', { name: 'Show' }));
-      expect(mockElement.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
+      expect(mockElement.scrollIntoView).toHaveBeenCalledWith({
+        behavior: 'smooth',
+      });
     });
 
     it('должен вызывать событие формы при действии callFormEvent', () => {
@@ -438,7 +500,10 @@ describe('BigConfMf', () => {
         />
       );
       fireEvent.click(screen.getByRole('button', { name: 'Form' }));
-      expect(consoleSpy).toHaveBeenCalledWith('Form event triggered:', TEST_EVENT_NAME);
+      expect(consoleSpy).toHaveBeenCalledWith(
+        'Form event triggered:',
+        TEST_EVENT_NAME
+      );
       consoleSpy.mockRestore();
     });
 
@@ -472,7 +537,12 @@ describe('BigConfMf', () => {
               active: true,
               text: 'Link',
               color: { style: 'primary' },
-              onClick: { action: 'goToLink', url: TEST_LINK_URL, nofollow: true, noindex: true },
+              onClick: {
+                action: 'goToLink',
+                url: TEST_LINK_URL,
+                nofollow: true,
+                noindex: true,
+              },
             },
           }}
         />
@@ -490,7 +560,11 @@ describe('BigConfMf', () => {
               active: true,
               text: 'Link',
               color: { style: 'primary' },
-              onClick: { action: 'goToLink', url: TEST_LINK_URL, targetBlank: true },
+              onClick: {
+                action: 'goToLink',
+                url: TEST_LINK_URL,
+                targetBlank: true,
+              },
             },
           }}
         />
@@ -508,7 +582,11 @@ describe('BigConfMf', () => {
               active: true,
               text: 'Link',
               color: { style: 'primary' },
-              onClick: { action: 'goToLink', url: TEST_LINK_URL, title: TEST_LINK_TITLE },
+              onClick: {
+                action: 'goToLink',
+                url: TEST_LINK_URL,
+                title: TEST_LINK_TITLE,
+              },
             },
           }}
         />
@@ -542,7 +620,11 @@ describe('BigConfMf', () => {
         <BigConfMf
           panel={{
             ...basePanel,
-            button: { active: true, text: 'Button', color: { style: 'primary' } },
+            button: {
+              active: true,
+              text: 'Button',
+              color: { style: 'primary' },
+            },
           }}
         />
       );

@@ -7,8 +7,20 @@ type Size = 's' | 'm' | 'l';
 type ImagePosition = 'left' | 'right';
 type TitleSize = 's' | 'l';
 type HtmlTag = 'div' | 'b' | 'strong' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-type ButtonStyle = 'primary' | 'secondary' | 'outline' | 'outlineDark' | 'outlineLight' | 'textLink' | 'custom';
-type ButtonAction = 'goToLink' | 'goToBlock' | 'showBlock' | 'crossSale' | 'callFormEvent';
+type ButtonStyle =
+  | 'primary'
+  | 'secondary'
+  | 'outline'
+  | 'outlineDark'
+  | 'outlineLight'
+  | 'textLink'
+  | 'custom';
+type ButtonAction =
+  | 'goToLink'
+  | 'goToBlock'
+  | 'showBlock'
+  | 'crossSale'
+  | 'callFormEvent';
 type ImageAlign = 'top' | 'center' | 'bottom';
 
 interface ImageSrcset {
@@ -182,14 +194,21 @@ function getImageAlignClass(align: ImageAlign): string {
   }
 }
 
-function renderHtmlTag(tag: HtmlTag | undefined, content: React.ReactNode, className?: string): React.ReactNode {
+function renderHtmlTag(
+  tag: HtmlTag | undefined,
+  content: React.ReactNode,
+  className?: string
+): React.ReactNode {
   const Tag = tag || 'div';
   return <Tag className={className}>{content}</Tag>;
 }
 
-function buildSrcSet(srcset: ImageSrcset[] | undefined, type: 'src' | 'webp'): string {
+function buildSrcSet(
+  srcset: ImageSrcset[] | undefined,
+  type: 'src' | 'webp'
+): string {
   if (!srcset || srcset.length === 0) return '';
-  return srcset.map(item => `${item.src} ${item.condition}`).join(', ');
+  return srcset.map((item) => `${item.src} ${item.condition}`).join(', ');
 }
 
 export function BigConfMf({ background, panel }: BigConfMfProps) {
@@ -203,16 +222,29 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
     );
   }
 
-  const { color, size, imagePosition, title, description, image, button, href } = panel;
+  const {
+    color,
+    size,
+    imagePosition,
+    title,
+    description,
+    image,
+    button,
+    href,
+  } = panel;
 
   const panelClasses = [
     styles.panel,
     getPanelStyleClass(color.style),
     getSizeClass(size),
     getImagePositionClass(imagePosition),
-  ].filter(Boolean).join(' ');
+  ]
+    .filter(Boolean)
+    .join(' ');
 
-  const panelStyle = color.background ? { backgroundColor: color.background } : {};
+  const panelStyle = color.background
+    ? { backgroundColor: color.background }
+    : {};
 
   const imageAlignClass = getImageAlignClass(image.imageAlign);
 
@@ -254,14 +286,23 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
   const renderButton = () => {
     const ButtonTag = (button.htmlTag || 'button') as 'button' | 'a' | 'div';
 
-    if (href || (button.onClick && (button.onClick.action === 'goToLink' || button.onClick.action === 'crossSale'))) {
+    if (
+      href ||
+      (button.onClick &&
+        (button.onClick.action === 'goToLink' ||
+          button.onClick.action === 'crossSale'))
+    ) {
       return (
         <a
           href={href || button.onClick?.url || '#'}
           className={buttonClasses}
           style={buttonStyle}
           target={button.onClick?.targetBlank ? '_blank' : undefined}
-          rel={(button.onClick?.nofollow || button.onClick?.noindex) ? 'nofollow noindex' : undefined}
+          rel={
+            button.onClick?.nofollow || button.onClick?.noindex
+              ? 'nofollow noindex'
+              : undefined
+          }
           title={button.onClick?.title}
           onClick={(e) => {
             e.preventDefault();
@@ -293,7 +334,11 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
           {/* Title */}
           {title && (
             <div className={styles.title}>
-              {renderHtmlTag(title.htmlTag, title.text, getTitleSizeClass(title.size))}
+              {renderHtmlTag(
+                title.htmlTag,
+                title.text,
+                getTitleSizeClass(title.size)
+              )}
             </div>
           )}
 
@@ -308,12 +353,13 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
           {image && image.image && image.image.src && (
             <div className={`${styles.imageContainer} ${imageAlignClass}`}>
               <picture>
-                {image.image.webpSrcset && image.image.webpSrcset.length > 0 && (
-                  <source
-                    type="image/webp"
-                    srcSet={buildSrcSet(image.image.webpSrcset, 'webp')}
-                  />
-                )}
+                {image.image.webpSrcset &&
+                  image.image.webpSrcset.length > 0 && (
+                    <source
+                      type="image/webp"
+                      srcSet={buildSrcSet(image.image.webpSrcset, 'webp')}
+                    />
+                  )}
                 {image.image.srcset && image.image.srcset.length > 0 && (
                   <source
                     type="image/png"
