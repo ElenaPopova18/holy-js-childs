@@ -38,9 +38,9 @@ jobs:
 
       - run: yarn test-storybook:coverage
 
-      - run: mkdir -p storybook-static/coverage
-
-      - run: cp -R coverage/* storybook-static/coverage/
+      - run: |
+          mkdir -p storybook-static/coverage
+          cp -R coverage/* storybook-static/coverage/
 
       - uses: actions/configure-pages@v5
 
