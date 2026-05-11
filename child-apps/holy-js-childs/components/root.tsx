@@ -32,7 +32,6 @@ export function RootCmp({
   //   throw new Error('SSR ERROR: window is not available on server! This is intentional for demo purposes.');
   // }
   //const screenWidth = window.innerWidth;
-  
   const [clickCount, setClickCount] = useState(0);
   const [activityLog, setActivityLog] = useState<string[]>([]);
   const [witches, setWitches] = useState<string[]>([]);
