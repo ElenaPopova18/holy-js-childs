@@ -14,8 +14,8 @@
     "noUnusedParameters": false,
     "noEmitOnError": true,
     "importHelpers": true,
-    "skipLibCheck": true,
-    "baseUrl": "src"
+    "skipLibCheck": true
+    //"baseUrl": "src"
   },
   "ts-node": {
     "transpileOnly": true,

@@ -294,12 +294,12 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
           break;
         case 'callFormEvent':
           if (eventName) {
-            // eslint-disable-next-line no-console
+             
             console.log('Form event triggered:', eventName);
           }
           break;
         default:
-          // eslint-disable-next-line no-console
+           
           console.log('Button clicked with action:', action);
       }
     }

@@ -45,7 +45,7 @@ describe('RootCmp', () => {
   it('должен использовать variant primary', () => {
     const { container } = render(<RootCmp variant="primary" />);
     const button = container.querySelector('button');
-    // eslint-disable-next-line no-console
+     
     console.log(button);
   });
 

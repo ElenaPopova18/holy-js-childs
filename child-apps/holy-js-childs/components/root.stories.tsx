@@ -99,7 +99,7 @@ export const WithClickHandler: Story = {
   args: {
     variant: 'primary',
     onButtonClick: () => {
-      // eslint-disable-next-line no-alert
+       
       alert('Кнопка нажата! Ведьма призвана! 🧙‍♀️');
     },
   },

@@ -96,7 +96,7 @@ export function RootCmp({
           <p className={styles.logEmpty}>Кликни на кнопку — появится лог</p>
         ) : (
           activityLog.map((log, idx) => (
-            // eslint-disable-next-line react/no-array-index-key
+             
             <p key={idx} className={styles.logEntry}>
               [{log}]
             </p>
