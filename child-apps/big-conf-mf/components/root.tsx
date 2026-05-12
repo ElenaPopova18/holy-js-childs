@@ -231,6 +231,82 @@ function buildSrcSet(
   return srcset.map((item) => `${item.src} ${item.condition}`).join(', ');
 }
 
+function handleButtonAction(
+  action: ButtonAction,
+  url: string | undefined,
+  targetBlank: boolean | undefined,
+  eventName: string | undefined
+): void {
+  switch (action) {
+    case 'goToLink':
+    case 'crossSale':
+      if (url) {
+        window.open(url, targetBlank ? '_blank' : '_self');
+      }
+      break;
+    case 'goToBlock':
+    case 'showBlock':
+      if (url) {
+        const element = document.querySelector(url);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }
+      break;
+    case 'callFormEvent':
+      if (eventName) {
+        console.log('Form event triggered:', eventName);
+      }
+      break;
+    default:
+      console.log('Button clicked with action:', action);
+  }
+}
+
+function isLinkButton(
+  href: string | undefined,
+  onClick: ButtonOnClick | undefined
+): boolean {
+  return !!(
+    href ||
+    (onClick &&
+      (onClick.action === 'goToLink' ||
+        onClick.action === 'crossSale'))
+  );
+}
+
+function renderLinkButton(
+  ButtonTag: 'button' | 'a' | 'div',
+  href: string | undefined,
+  buttonClasses: string,
+  buttonStyle: React.CSSProperties,
+  onClick: ButtonOnClick | undefined,
+  handleButtonClick: () => void
+): React.ReactNode {
+  return (
+    <a
+      href={href || onClick?.url || '#'}
+      className={buttonClasses}
+      style={buttonStyle}
+      target={onClick?.targetBlank ? '_blank' : undefined}
+      rel={(() => {
+        if (onClick?.targetBlank) {
+          return 'noreferrer noopener';
+        }
+        if (onClick?.nofollow || onClick?.noindex) {
+          return 'nofollow noindex';
+        }
+        return undefined;
+      })()}
+      title={onClick?.title}
+      onClick={(e) => {
+        e.preventDefault();
+        handleButtonClick();
+      }}
+    >
+      {onClick?.text || ''}
+    </a>
+  );
+}
+
 export function BigConfMf({ background, panel }: BigConfMfProps) {
   const containerStyle = background ? { backgroundColor: background } : {};
 
@@ -275,69 +351,18 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
     : {};
 
   const handleButtonClick = () => {
-    if (button.onClick) {
-      const { action, url, targetBlank, eventName } = button.onClick;
-
-      switch (action) {
-        case 'goToLink':
-        case 'crossSale':
-          if (url) {
-            window.open(url, targetBlank ? '_blank' : '_self');
-          }
-          break;
-        case 'goToBlock':
-        case 'showBlock':
-          if (url) {
-            const element = document.querySelector(url);
-            element?.scrollIntoView({ behavior: 'smooth' });
-          }
-          break;
-        case 'callFormEvent':
-          if (eventName) {
-             
-            console.log('Form event triggered:', eventName);
-          }
-          break;
-        default:
-           
-          console.log('Button clicked with action:', action);
-      }
-    }
+    if (!button.onClick) return;
+    
+    const { action, url, targetBlank, eventName } = button.onClick;
+    handleButtonAction(action, url, targetBlank, eventName);
   };
 
   const renderButton = () => {
     const ButtonTag = (button.htmlTag || 'button') as 'button' | 'a' | 'div';
+    const isLinkAction = isLinkButton(href, button.onClick);
 
-    if (
-      href ||
-      (button.onClick &&
-        (button.onClick.action === 'goToLink' ||
-          button.onClick.action === 'crossSale'))
-    ) {
-      return (
-        <a
-          href={href || button.onClick?.url || '#'}
-          className={buttonClasses}
-          style={buttonStyle}
-          target={button.onClick?.targetBlank ? '_blank' : undefined}
-          rel={(() => {
-            if (button.onClick?.targetBlank) {
-              return 'noreferrer noopener';
-            }
-            if (button.onClick?.nofollow || button.onClick?.noindex) {
-              return 'nofollow noindex';
-            }
-            return undefined;
-          })()}
-          title={button.onClick?.title}
-          onClick={(e) => {
-            e.preventDefault();
-            handleButtonClick();
-          }}
-        >
-          {button.text}
-        </a>
-      );
+    if (isLinkAction) {
+      return renderLinkButton(ButtonTag, href, buttonClasses, buttonStyle, button.onClick, handleButtonClick);
     }
 
     return (
@@ -356,7 +381,7 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
   return (
     <div className={styles.container} style={containerStyle}>
       <div className={panelClasses} style={panelStyle}>
-        <div className={styles.panelContent}>
+        <div className={image && image.image && image.image.src ? styles.panelContentWithImage : styles.panelContent}>
           {/* Title */}
           {title && (
             <div className={styles.title}>

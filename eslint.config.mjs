@@ -77,10 +77,10 @@ export default [
             "@typescript-eslint/no-explicit-any": "warn",
             "@typescript-eslint/no-implied-eval": "error",
             // Раскоментируй проверки для CSS modules
-            //"css-modules/no-unused-class": "off",
+            //"css-modules/no-unused-class": "error",
             "react/jsx-no-target-blank": "off",
             // Раскоментируй проверки для Complexity
-            //complexity: ["error", 10],
+            complexity: ["error", 12],
         },
     },
     {
