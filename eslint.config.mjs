@@ -116,7 +116,7 @@ export default [
         },
         // Раскоментируй проверки для jest
         rules: {
-            //...pluginJest.configs.recommended.rules,
+            ...pluginJest.configs.recommended.rules,
         },
     },
     // Playwright
