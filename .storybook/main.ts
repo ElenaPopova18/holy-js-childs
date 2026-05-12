@@ -37,10 +37,7 @@ const config: StorybookConfig = {
     options: {},
   },
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
-  },
-  docs: {
-    enabled: true,
+    reactDocgen: false,
   },
   async viteFinal(storybookConfig) {
     return mergeConfig(storybookConfig, {
