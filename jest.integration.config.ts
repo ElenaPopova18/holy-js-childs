@@ -5,5 +5,4 @@ const config: Config.InitialOptions = {
   testMatch: ['**/__integration__/**/?(*.)+(test).[jt]s?(x)'],
 };
 
-// eslint-disable-next-line import/no-default-export
 export default config;

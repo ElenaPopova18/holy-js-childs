@@ -60,7 +60,7 @@ describe('RootCmp', () => {
     expect(button).toBeDisabled();
   });
 
-  it.only('должен вызывать onButtonClick при клике', () => {
+  it('должен вызывать onButtonClick при клике', () => {
     const handleClick = jest.fn();
     render(<RootCmp onButtonClick={handleClick} />);
     const button = screen.getByRole('button');
