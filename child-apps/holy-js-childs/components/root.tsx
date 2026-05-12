@@ -57,7 +57,7 @@ export function RootCmp({
       ]);
     }, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [clickCount]);
 
   const handleClick = () => {
     setClickCount(clickCount + 1);

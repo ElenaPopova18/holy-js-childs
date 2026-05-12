@@ -224,8 +224,8 @@ function renderHtmlTag(
 }
 
 function buildSrcSet(
-  srcset: ImageSrcset[] | undefined,
-  _type?: string
+  srcset: ImageSrcset[] | undefined
+  // _type parameter intentionally unused - kept for API compatibility
 ): string {
   if (!srcset || srcset.length === 0) return '';
   return srcset.map((item) => `${item.src} ${item.condition}`).join(', ');
