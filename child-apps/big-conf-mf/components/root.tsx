@@ -279,7 +279,8 @@ function renderLinkButton(
   buttonClasses: string,
   buttonStyle: React.CSSProperties,
   onClick: ButtonOnClick | undefined,
-  handleButtonClick: () => void
+  handleButtonClick: () => void,
+  buttonText: string
 ): React.ReactNode {
   return (
     <a
@@ -302,7 +303,7 @@ function renderLinkButton(
         handleButtonClick();
       }}
     >
-      {onClick?.text || ''}
+      {buttonText}
     </a>
   );
 }
@@ -362,7 +363,7 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
     const isLinkAction = isLinkButton(href, button.onClick);
 
     if (isLinkAction) {
-      return renderLinkButton(ButtonTag, href, buttonClasses, buttonStyle, button.onClick, handleButtonClick);
+      return renderLinkButton(ButtonTag, href, buttonClasses, buttonStyle, button.onClick, handleButtonClick, button.text);
     }
 
     return (
