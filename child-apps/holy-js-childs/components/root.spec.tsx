@@ -42,13 +42,6 @@ describe('RootCmp', () => {
     expect(screen.getByText('🧙‍♀️')).toBeInTheDocument();
   });
 
-  it('должен использовать variant primary', () => {
-    const { container } = render(<RootCmp variant="primary" />);
-    const button = container.querySelector('button');
-     
-    console.log(button);
-  });
-
   it('должен использовать кастомный текст кнопки', () => {
     render(<RootCmp buttonText="Custom Button Text" />);
     expect(screen.getByText('Custom Button Text')).toBeInTheDocument();

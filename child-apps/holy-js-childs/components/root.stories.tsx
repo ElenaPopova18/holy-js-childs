@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { RootCmp } from './root';
 
 const meta = {
@@ -8,6 +9,28 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  decorators: [
+    (Story, context) => (
+      <div style={{ marginBottom: '24px' }}>
+        {context.parameters.testDescription && (
+          <div
+            style={{
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              color: 'white',
+              padding: '12px 16px',
+              borderRadius: '8px',
+              marginBottom: '16px',
+              fontSize: '14px',
+              fontWeight: '500',
+            }}
+          >
+            🧪 <strong>Проверка:</strong> {context.parameters.testDescription}
+          </div>
+        )}
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
     variant: {
       control: 'select',
@@ -62,24 +85,56 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Базовый вариант компонента с кнопкой default стиля.',
+      },
+    },
+    testDescription: 'Базовый вариант компонента с кнопкой default стиля.',
+  },
   args: {
     variant: 'default',
   },
 };
 
 export const PrimaryVariant: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Кнопка синего цвета (primary стиль).',
+      },
+    },
+    testDescription: 'Кнопка синего цвета (primary стиль).',
+  },
   args: {
     variant: 'primary',
   },
 };
 
 export const SecondaryVariant: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Кнопка серого цвета (secondary стиль).',
+      },
+    },
+    testDescription: 'Кнопка серого цвета (secondary стиль).',
+  },
   args: {
     variant: 'secondary',
   },
 };
 
 export const CustomTexts: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Компонент с кастомными заголовком, подзаголовком и текстом кнопки.',
+      },
+    },
+    testDescription: 'Компонент с кастомными заголовком, подзаголовком и текстом кнопки.',
+  },
   args: {
     title: 'Добро пожаловать!',
     subtitle:
@@ -89,6 +144,14 @@ export const CustomTexts: Story = {
 };
 
 export const DisabledButton: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Неактивная кнопка (disabled: true) — проверяет отображение disabled состояния.',
+      },
+    },
+    testDescription: 'Неактивная кнопка (disabled: true) — проверяет отображение disabled состояния.',
+  },
   args: {
     disabled: true,
     variant: 'primary',
@@ -96,16 +159,32 @@ export const DisabledButton: Story = {
 };
 
 export const WithClickHandler: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Кнопка с обработчиком клика, который вызывает alert.',
+      },
+    },
+    testDescription: 'Кнопка с обработчиком клика, который вызывает alert.',
+  },
   args: {
     variant: 'primary',
     onButtonClick: () => {
-       
+
       alert('Кнопка нажата! Ведьма призвана! 🧙‍♀️');
     },
   },
 };
 
 export const FullyCustomized: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Полностью кастомизированный компонент с эмодзи и праздничным настроением.',
+      },
+    },
+    testDescription: 'Полностью кастомизированный компонент с эмодзи и праздничным настроением.',
+  },
   args: {
     variant: 'primary',
     title: '🎉 Супер компонент',
