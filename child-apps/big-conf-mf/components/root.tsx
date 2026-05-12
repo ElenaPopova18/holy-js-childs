@@ -381,27 +381,9 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
 
   return (
     <div className={styles.container} style={containerStyle}>
-      {/* Title */}
-      {title && (
-        <div className={styles.title}>
-          {renderHtmlTag(
-            title.htmlTag,
-            title.text,
-            getTitleSizeClass(title.size)
-          )}
-        </div>
-      )}
-
-      {/* Description */}
-      {description && (
-        <div className={styles.description}>
-          {renderHtmlTag(description.htmlTag, description.text)}
-        </div>
-      )}
-
       {/* Panel Card */}
       <div className={panelClasses} style={panelStyle}>
-        <div className={image && image.image && image.image.src ? styles.panelContentWithImage : styles.panelContent}>
+        <div className={styles.panelContent}>
           {/* Image */}
           {image && image.image && image.image.src && (
             <div className={`${styles.imageContainer} ${imageAlignClass}`}>
@@ -427,6 +409,24 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
                 />
               </picture>
               {image.alt && <p className={styles.imageAlt}>{image.alt}</p>}
+            </div>
+          )}
+
+          {/* Title */}
+          {title && (
+            <div className={styles.title}>
+              {renderHtmlTag(
+                title.htmlTag,
+                title.text,
+                getTitleSizeClass(title.size)
+              )}
+            </div>
+          )}
+
+          {/* Description */}
+          {description && (
+            <div className={styles.description}>
+              {renderHtmlTag(description.htmlTag, description.text)}
             </div>
           )}
 

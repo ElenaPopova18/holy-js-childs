@@ -29,9 +29,6 @@
         "child-apps/*"
     ],
     "packageManager": "yarn@4.14.1",
-    "resolutions": {
-        "eslint": "9.39.4"
-    },
     "dependencies": {
         "@tramvai/child-app-core": "^6.79.33",
         "@tramvai/core": "^6.79.33",

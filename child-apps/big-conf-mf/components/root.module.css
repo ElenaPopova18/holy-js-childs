@@ -45,19 +45,20 @@
   padding: 30px;
 }
 
-/* Image position */
+/* Image position - kept for backward compatibility but not used for side-by-side */
 .imageLeft {
-  flex-direction: row;
+  /* No longer used for side-by-side layout */
 }
 
 .imageRight {
-  flex-direction: row-reverse;
+  /* No longer used for side-by-side layout */
 }
 
 /* Title styles */
 .title {
   margin-bottom: 12px;
   font-weight: bold;
+  text-align: center;
 }
 
 .titleS {
@@ -73,31 +74,36 @@
   margin-bottom: 16px;
   line-height: 1.6;
   color: #555;
+  text-align: center;
 }
 
 /* Image styles */
 .imageContainer {
-  margin: 16px 0;
+  margin: 0 0 16px 0;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .image {
   max-width: 100%;
   height: auto;
   border-radius: 4px;
+  display: block;
 }
 
 .imageTop {
-  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .imageCenter {
-  align-items: center;
+  justify-content: center;
 }
 
 .imageBottom {
-  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .imageAlt {
@@ -205,18 +211,6 @@
 .panelContent {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.panelContentWithImage {
-  display: flex;
-  gap: 20px;
   align-items: center;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .panelContentWithImage {
-    flex-direction: column;
-  }
+  gap: 16px;
 }
