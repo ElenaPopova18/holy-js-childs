@@ -23,6 +23,8 @@ export default [
             "**/.eslintrc",
             "**/.storybook/**",
             "**/jest.*.config.ts",
+            "child-apps/*/postcss.js",
+            "env.development.js",
         ],
     },
     js.configs.recommended,
