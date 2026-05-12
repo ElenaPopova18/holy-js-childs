@@ -57,10 +57,10 @@ export function RootCmp({
       ]);
     }, 1000);
     return () => clearInterval(timer);
-  }, [clickCount]);
+  }, []);
 
   const handleClick = () => {
-    setClickCount(clickCount + 1);
+    setClickCount((prev) => prev + 1);
     if (witches.length < maxWitches) {
       setWitches((prev) => [...prev, '🧙‍♀️']);
     }
@@ -96,7 +96,7 @@ export function RootCmp({
           <p className={styles.logEmpty}>Кликни на кнопку — появится лог</p>
         ) : (
           activityLog.map((log, idx) => (
-             
+
             <p key={idx} className={styles.logEntry}>
               [{log}]
             </p>

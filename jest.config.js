@@ -11,4 +11,7 @@ module.exports = {
   },
   forceExit: true,
   clearMocks: true,
+  collectCoverage: true,
+  coverageReporters: ['text-summary', 'lcov'],
+  coverageDirectory: 'coverage/jest',
 };
