@@ -137,7 +137,7 @@ export function RootCmp({
         // ButtonManager используется для обработки кликов
         const buttonManager = new ButtonManager();
         const handleManagerClick = () => {
-          buttonManager.scheduleClick(`Witch summon #${clickCount + 1}`);
+          buttonManager.scheduleClick('А я тут вызываю ведьм');
         };
 
         return (
