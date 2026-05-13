@@ -14,6 +14,7 @@ export interface RootCmpProps {
   showSecretMessage?: boolean;
   maxWitches?: number;
   celebrationMode?: boolean;
+  targetBlank?: boolean;
 }
 
 export function RootCmp({
@@ -28,6 +29,7 @@ export function RootCmp({
   showSecretMessage = false,
   maxWitches = 10,
   celebrationMode = false,
+  targetBlank = false,
 }: RootCmpProps) {
   // // ОШИБКА ССР: обращение к window в теле компонента вызовет падение сервера
   // if (typeof window === 'undefined') {
@@ -154,6 +156,7 @@ export function RootCmp({
               handleClick();
             }}
             disabled={disabled}
+            {...(targetBlank && { target: '_blank' })}
           >
             {buttonText} {witches.length > 0 && `(${witches.length})`}
           </button>

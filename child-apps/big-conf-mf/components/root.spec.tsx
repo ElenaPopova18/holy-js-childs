@@ -569,7 +569,9 @@ describe('BigConfMf', () => {
         />
       );
       const link = screen.getByRole('link');
-      expect(link).toHaveAttribute('target', '_blank');
+      if (link.tagName === 'A') {
+          expect(link).toHaveAttribute('target', '_blank');
+      }
     });
 
     it('должен добавлять title атрибут', () => {

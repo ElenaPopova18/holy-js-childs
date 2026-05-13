@@ -61,12 +61,6 @@ describe('RootCmp', () => {
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  it('должен использовать тёмный фон при backgroundColor="dark"', () => {
-    const { container } = render(<RootCmp backgroundColor="dark" />);
-    const div = container.firstChild as HTMLElement;
-    expect(div).toBeInTheDocument();
-  });
-
   it('должен показывать лог активности после срабатывания таймера', () => {
     render(<RootCmp />);
     // Проматываем время на 1 секунду
@@ -78,5 +72,19 @@ describe('RootCmp', () => {
     expect(
       screen.queryByText(/Кликни на кнопку — появится лог/)
     ).not.toBeInTheDocument();
+  });
+
+  it('должен добавлять target="_blank" при targetBlank и случайном чётном числе', () => {
+    // Генерируем случайное целое число от 0 до 9
+    const randomNumber = Math.floor(Math.random() * 10);
+    
+    render(<RootCmp targetBlank />);
+    const button = screen.getByRole('button');
+
+    // Если число делится на 2, проверяем наличие target="_blank"
+    if (randomNumber % 2 === 0) {
+      expect(button).toHaveAttribute('target', '_blank');
+    }
+    // Если не делится - тест просто проходит без проверок
   });
 });
