@@ -224,8 +224,7 @@ function renderHtmlTag(
 }
 
 function buildSrcSet(
-  srcset: ImageSrcset[] | undefined
-  // _type parameter intentionally unused - kept for API compatibility
+  srcset: ImageSrcset[] | undefined,
 ): string {
   if (!srcset || srcset.length === 0) return '';
   return srcset.map((item) => `${item.src} ${item.condition}`).join(', ');
@@ -353,7 +352,7 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
 
   const handleButtonClick = () => {
     if (!button.onClick) return;
-    
+
     const { action, url, targetBlank, eventName } = button.onClick;
     handleButtonAction(action, url, targetBlank, eventName);
   };
@@ -403,13 +402,13 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
                   image.image.webpSrcset.length > 0 && (
                     <source
                       type="image/webp"
-                      srcSet={buildSrcSet(image.image.webpSrcset, 'webp')}
+                      srcSet={buildSrcSet(image.image.webpSrcset)}
                     />
                   )}
                 {image.image.srcset && image.image.srcset.length > 0 && (
                   <source
                     type="image/png"
-                    srcSet={buildSrcSet(image.image.srcset, 'src')}
+                    srcSet={buildSrcSet(image.image.srcset)}
                   />
                 )}
                 <img

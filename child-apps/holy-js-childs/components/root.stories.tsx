@@ -192,3 +192,20 @@ export const FullyCustomized: Story = {
     buttonText: 'Призвать ведьму 🧙‍♀️',
   },
 };
+
+export const SecretMessage: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Компонент с секретным сообщением, которое появляется после 5 кликов.',
+      },
+    },
+    testDescription: 'Секретное сообщение появляется после 5 кликов.',
+  },
+  args: {
+    variant: 'primary',
+    showSecretMessage: true,
+    title: '🔮 Тайное заклинание',
+    subtitle: 'Кликни 5 раз и узнаешь секрет!',
+  },
+};

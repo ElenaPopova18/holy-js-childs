@@ -2,9 +2,7 @@ import styles from './root.module.css';
 
 export class ButtonManager {
   scheduleClick(message: string) {
-    setTimeout(() => {
-      console.log(message);
-    }, 1000);
+    setTimeout("console.log(message)", 1000);
   }
 }
 
