@@ -80,7 +80,7 @@ export default [
             //"css-modules/no-unused-class": "error",
             "react/jsx-no-target-blank": "off",
             // Раскоментируй проверки для Complexity
-            //complexity: ["error", 12],
+            //complexity: ["error", 14],
         },
     },
     {

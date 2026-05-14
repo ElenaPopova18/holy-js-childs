@@ -574,7 +574,7 @@ describe('BigConfMf', () => {
       }
     });
 
-    it('должен добавлять title атрибут', () => {
+    it('', () => {
       render(
         <BigConfMf
           panel={{

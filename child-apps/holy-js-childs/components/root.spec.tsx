@@ -75,26 +75,19 @@ describe('RootCmp', () => {
   });
 
   it('должен добавлять target="_blank" при targetBlank и случайном чётном числе', () => {
-    // Генерируем случайное целое число от 0 до 9
-    const randomNumber = Math.floor(Math.random() * 10);
-    
     render(<RootCmp targetBlank />);
     const button = screen.getByRole('button');
 
-    // Если число делится на 2, проверяем наличие target="_blank"
-    if (randomNumber % 2 === 0) {
-      expect(button).toHaveAttribute('target', '_blank');
-    }
-    // Если не делится - тест просто проходит без проверок
+    expect(button).toHaveAttribute('target', '_blank');
   });
 
   it('должен показывать секретное сообщение после 5 кликов (пример выносимой логики)', () => {
     // Этот тест демонстрирует логику, которую можно вынести в чистую функцию
     // shouldShowSecretMessage(showSecretMessage: boolean, clickCount: number): boolean
     // return showSecretMessage && clickCount > 5;
-    
+
     render(<RootCmp showSecretMessage />);
-    
+
     // Изначально секретное сообщение не видно (0 кликов)
     expect(
       screen.queryByText(/Секретное сообщение:/)
@@ -120,16 +113,16 @@ describe('RootCmp', () => {
     // Этот тест демонстрирует логику, которую можно вынести в чистую функцию
     // shouldShowCelebration(celebrationMode: boolean, clickCount: number): boolean
     // return celebrationMode && clickCount > 0 && clickCount % 5 === 0;
-    
+
     render(<RootCmp celebrationMode />);
-    
+
     // Изначально поздравлений нет (0 кликов)
     expect(
       screen.queryByText(/Поздравляем с/)
     ).not.toBeInTheDocument();
 
     const button = screen.getByRole('button');
-    
+
     // 1 клик — поздравления нет
     fireEvent.click(button);
     expect(
