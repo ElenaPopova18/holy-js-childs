@@ -11,6 +11,7 @@
         "lint:step1": "yarn lint:file child-apps/holy-js-childs/components/root.utils.ts",
         "lint:step2": "yarn lint:file child-apps/holy-js-childs/components/root.tsx",
         "test": "jest --passWithNoTests",
+        "test:big-mf": "yarn test --testPathPattern=\"big-conf-mf\"",
         "test:integration": "playwright test",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",

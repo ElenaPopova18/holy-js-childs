@@ -632,7 +632,7 @@ describe('BigConfMf', () => {
       expect(screen.getByRole('button').tagName).toBe('BUTTON');
     });
 
-    it('', () => {
+    it('должен рендерить как ссылку при htmlTag: a', () => {
       render(
         <BigConfMf
           panel={{

@@ -87,4 +87,82 @@ describe('RootCmp', () => {
     }
     // Если не делится - тест просто проходит без проверок
   });
+
+  it('должен показывать секретное сообщение после 5 кликов (пример выносимой логики)', () => {
+    // Этот тест демонстрирует логику, которую можно вынести в чистую функцию
+    // shouldShowSecretMessage(showSecretMessage: boolean, clickCount: number): boolean
+    // return showSecretMessage && clickCount > 5;
+    
+    render(<RootCmp showSecretMessage />);
+    
+    // Изначально секретное сообщение не видно (0 кликов)
+    expect(
+      screen.queryByText(/Секретное сообщение:/)
+    ).not.toBeInTheDocument();
+
+    // Делаем 5 кликов — сообщение всё ещё не должно появиться
+    const button = screen.getByRole('button');
+    for (let i = 0; i < 5; i++) {
+      fireEvent.click(button);
+    }
+    expect(
+      screen.queryByText(/Секретное сообщение:/)
+    ).not.toBeInTheDocument();
+
+    // Делаем 6-й клик — сообщение должно появиться
+    fireEvent.click(button);
+    expect(
+      screen.getByText(/🎉 Секретное сообщение: Ты настоящий мастер призыва ведьм!/)
+    ).toBeInTheDocument();
+  });
+
+  it('должен показывать блок поздравлений только на кратных 5 кликах (пример выносимой логики)', () => {
+    // Этот тест демонстрирует логику, которую можно вынести в чистую функцию
+    // shouldShowCelebration(celebrationMode: boolean, clickCount: number): boolean
+    // return celebrationMode && clickCount > 0 && clickCount % 5 === 0;
+    
+    render(<RootCmp celebrationMode />);
+    
+    // Изначально поздравлений нет (0 кликов)
+    expect(
+      screen.queryByText(/Поздравляем с/)
+    ).not.toBeInTheDocument();
+
+    const button = screen.getByRole('button');
+    
+    // 1 клик — поздравления нет
+    fireEvent.click(button);
+    expect(
+      screen.queryByText(/Поздравляем с/)
+    ).not.toBeInTheDocument();
+
+    // 2 клика — поздравления нет
+    fireEvent.click(button);
+    expect(
+      screen.queryByText(/Поздравляем с/)
+    ).not.toBeInTheDocument();
+
+    // 5 кликов — должно появиться поздравление
+    fireEvent.click(button);
+    fireEvent.click(button);
+    fireEvent.click(button);
+    expect(
+      screen.getByText(/🎊🎈🎁 Поздравляем с 5 кликами! 🎁🎈🎊/)
+    ).toBeInTheDocument();
+
+    // 6 кликов — поздравление должно исчезнуть
+    fireEvent.click(button);
+    expect(
+      screen.queryByText(/🎊🎈🎁 Поздравляем с 5 кликами! 🎁🎈🎊/)
+    ).not.toBeInTheDocument();
+
+    // 10 кликов — поздравление должно появиться снова
+    fireEvent.click(button);
+    fireEvent.click(button);
+    fireEvent.click(button);
+    fireEvent.click(button);
+    expect(
+      screen.getByText(/🎊🎈🎁 Поздравляем с 10 кликами! 🎁🎈🎊/)
+    ).toBeInTheDocument();
+  });
 });

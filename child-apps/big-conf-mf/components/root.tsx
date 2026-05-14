@@ -107,7 +107,7 @@ interface BigConfMfProps {
   panel?: PanelProps;
 }
 
-function getPanelStyleClass(style: ColorStyle): string {
+export function getPanelStyleClass(style: ColorStyle): string {
   switch (style) {
     case 'outline':
       return styles.panelOutline;
@@ -122,7 +122,7 @@ function getPanelStyleClass(style: ColorStyle): string {
   }
 }
 
-function getSizeClass(size: Size): string {
+export function getSizeClass(size: Size): string {
   switch (size) {
     case 's':
       return styles.panelS;
@@ -135,7 +135,7 @@ function getSizeClass(size: Size): string {
   }
 }
 
-function getImagePositionClass(position: ImagePosition): string {
+export function getImagePositionClass(position: ImagePosition): string {
   switch (position) {
     case 'left':
       return styles.imageLeft;
@@ -272,8 +272,19 @@ function isLinkButton(
   );
 }
 
+function getRelAttribute(onClick: ButtonOnClick | undefined): string | undefined {
+  if (!onClick) return undefined;
+  
+  if (onClick.targetBlank) {
+    return 'noreferrer noopener';
+  }
+  if (onClick.nofollow || onClick.noindex) {
+    return 'nofollow noindex';
+  }
+  return undefined;
+}
+
 function renderLinkButton(
-  ButtonTag: 'button' | 'a' | 'div',
   href: string | undefined,
   buttonClasses: string,
   buttonStyle: React.CSSProperties,
@@ -287,15 +298,7 @@ function renderLinkButton(
       className={buttonClasses}
       style={buttonStyle}
       target={onClick?.targetBlank ? '_blank' : undefined}
-      rel={(() => {
-        if (onClick?.targetBlank) {
-          return 'noreferrer noopener';
-        }
-        if (onClick?.nofollow || onClick?.noindex) {
-          return 'nofollow noindex';
-        }
-        return undefined;
-      })()}
+      rel={getRelAttribute(onClick)}
       title={onClick?.title}
       onClick={(e) => {
         e.preventDefault();
@@ -307,29 +310,29 @@ function renderLinkButton(
   );
 }
 
-export function BigConfMf({ background, panel }: BigConfMfProps) {
-  const containerStyle = background ? { backgroundColor: background } : {};
+function renderRegularButton(
+  buttonClasses: string,
+  buttonStyle: React.CSSProperties,
+  handleButtonClick: () => void,
+  buttonText: string,
+  active: boolean
+): React.ReactNode {
+  return (
+    <button
+      type="button"
+      className={buttonClasses}
+      style={buttonStyle}
+      onClick={handleButtonClick}
+      disabled={!active}
+    >
+      {buttonText}
+    </button>
+  );
+}
 
-  if (!panel) {
-    return (
-      <div className={styles.container} style={containerStyle}>
-        <p>Панель не настроена</p>
-      </div>
-    );
-  }
-
-  const {
-    color,
-    size,
-    imagePosition,
-    title,
-    description,
-    image,
-    button,
-    href,
-  } = panel;
-
-  const panelClasses = [
+function getPanelClasses(panel: PanelProps): string {
+  const { color, size, imagePosition } = panel;
+  return [
     styles.panel,
     getPanelStyleClass(color.style),
     getSizeClass(size),
@@ -337,102 +340,164 @@ export function BigConfMf({ background, panel }: BigConfMfProps) {
   ]
     .filter(Boolean)
     .join(' ');
+}
 
-  const panelStyle = color.background
-    ? { backgroundColor: color.background }
+function getPanelStyle(panel: PanelProps): React.CSSProperties | undefined {
+  return panel.color.background
+    ? { backgroundColor: panel.color.background }
     : {};
+}
 
-  const imageAlignClass = getImageAlignClass(image.imageAlign);
+function renderTitle(title: TitleConfig): React.ReactNode {
+  return (
+    <div className={styles.title}>
+      {renderHtmlTag(
+        title.htmlTag,
+        title.text,
+        getTitleSizeClass(title.size)
+      )}
+    </div>
+  );
+}
+
+function renderImage(image: ImageBlockConfig): React.ReactNode {
+  const { image: imageConfig, alt, title: imageTitle, imageAlign } = image;
+  
+  if (!imageConfig || !imageConfig.src) {
+    return null;
+  }
+
+  const imageAlignClass = getImageAlignClass(imageAlign);
+
+  return (
+    <div className={`${styles.imageContainer} ${imageAlignClass}`}>
+      <picture>
+        {imageConfig.webpSrcset && imageConfig.webpSrcset.length > 0 && (
+          <source
+            type="image/webp"
+            srcSet={buildSrcSet(imageConfig.webpSrcset)}
+          />
+        )}
+        {imageConfig.srcset && imageConfig.srcset.length > 0 && (
+          <source
+            type="image/png"
+            srcSet={buildSrcSet(imageConfig.srcset)}
+          />
+        )}
+        <img
+          src={imageConfig.src}
+          alt={alt}
+          title={imageTitle}
+          className={styles.image}
+        />
+      </picture>
+      {alt && <p className={styles.imageAlt}>{alt}</p>}
+    </div>
+  );
+}
+
+function renderDescription(description: DescriptionConfig): React.ReactNode {
+  return (
+    <div className={styles.description}>
+      {renderHtmlTag(description.htmlTag, description.text)}
+    </div>
+  );
+}
+
+function createButtonClickHandler(
+  onClick: ButtonOnClick | undefined,
+  handleButtonAction: (
+    action: ButtonAction,
+    url: string | undefined,
+    targetBlank: boolean | undefined,
+    eventName: string | undefined
+  ) => void
+): () => void {
+  return () => {
+    if (!onClick) return;
+    const { action, url, targetBlank, eventName } = onClick;
+    handleButtonAction(action, url, targetBlank, eventName);
+  };
+}
+
+function renderButton(
+  button: ButtonConfig,
+  href: string | undefined,
+  buttonClasses: string,
+  buttonStyle: React.CSSProperties
+): React.ReactNode {
+  const handleButtonClick = createButtonClickHandler(
+    button.onClick,
+    handleButtonAction
+  );
+
+  if (isLinkButton(href, button.onClick)) {
+    return renderLinkButton(
+      href,
+      buttonClasses,
+      buttonStyle,
+      button.onClick,
+      handleButtonClick,
+      button.text
+    );
+  }
+
+  return renderRegularButton(
+    buttonClasses,
+    buttonStyle,
+    handleButtonClick,
+    button.text,
+    button.active
+  );
+}
+
+function renderEmptyPanel(containerStyle: React.CSSProperties): React.ReactNode {
+  return (
+    <div className={styles.container} style={containerStyle}>
+      <p>Панель не настроена</p>
+    </div>
+  );
+}
+
+function renderPanelContent(panel: PanelProps): React.ReactNode {
+  const { title, description, image, button, href } = panel;
 
   const buttonClasses = getButtonStyleClass(button.color.style, button.active);
-
   const buttonStyle = button.color.backgroundColor
     ? { backgroundColor: button.color.backgroundColor }
     : {};
 
-  const handleButtonClick = () => {
-    if (!button.onClick) return;
+  return (
+    <>
+      {title && renderTitle(title)}
+      {image && image.image && image.image.src && renderImage(image)}
+      {description && renderDescription(description)}
+      {button && button.text && renderButton(button, href, buttonClasses, buttonStyle)}
+    </>
+  );
+}
 
-    const { action, url, targetBlank, eventName } = button.onClick;
-    handleButtonAction(action, url, targetBlank, eventName);
-  };
-
-  const renderButton = () => {
-    const ButtonTag = (button.htmlTag || 'button') as 'button' | 'a' | 'div';
-    const isLinkAction = isLinkButton(href, button.onClick);
-
-    if (isLinkAction) {
-      return renderLinkButton(ButtonTag, href, buttonClasses, buttonStyle, button.onClick, handleButtonClick, button.text);
-    }
-
-    return (
-      <ButtonTag
-        type="button"
-        className={buttonClasses}
-        style={buttonStyle}
-        onClick={handleButtonClick}
-        disabled={!button.active}
-      >
-        {button.text}
-      </ButtonTag>
-    );
-  };
+function renderPanel(panel: PanelProps, containerStyle: React.CSSProperties): React.ReactNode {
+  const panelClasses = getPanelClasses(panel);
+  const panelStyle = getPanelStyle(panel);
 
   return (
     <div className={styles.container} style={containerStyle}>
-      {/* Panel Card */}
       <div className={panelClasses} style={panelStyle}>
         <div className={styles.panelContent}>
-          {/* Title */}
-          {title && (
-            <div className={styles.title}>
-              {renderHtmlTag(
-                title.htmlTag,
-                title.text,
-                getTitleSizeClass(title.size)
-              )}
-            </div>
-          )}
-
-          {/* Image */}
-          {image && image.image && image.image.src && (
-            <div className={`${styles.imageContainer} ${imageAlignClass}`}>
-              <picture>
-                {image.image.webpSrcset &&
-                  image.image.webpSrcset.length > 0 && (
-                    <source
-                      type="image/webp"
-                      srcSet={buildSrcSet(image.image.webpSrcset)}
-                    />
-                  )}
-                {image.image.srcset && image.image.srcset.length > 0 && (
-                  <source
-                    type="image/png"
-                    srcSet={buildSrcSet(image.image.srcset)}
-                  />
-                )}
-                <img
-                  src={image.image.src}
-                  alt={image.alt}
-                  title={image.title}
-                  className={styles.image}
-                />
-              </picture>
-              {image.alt && <p className={styles.imageAlt}>{image.alt}</p>}
-            </div>
-          )}
-
-          {/* Description */}
-          {description && (
-            <div className={styles.description}>
-              {renderHtmlTag(description.htmlTag, description.text)}
-            </div>
-          )}
-
-          {/* Button */}
-          {button && button.text && renderButton()}
+          {renderPanelContent(panel)}
         </div>
       </div>
     </div>
   );
+}
+
+export function BigConfMf({ background, panel }: BigConfMfProps): React.ReactNode {
+  const containerStyle = background ? { backgroundColor: background } : {};
+
+  if (!panel) {
+    return renderEmptyPanel(containerStyle);
+  }
+
+  return renderPanel(panel, containerStyle);
 }
