@@ -31,18 +31,10 @@ export function RootCmp({
   celebrationMode = false,
   targetBlank = false,
 }: RootCmpProps) {
-  // // ОШИБКА ССР: обращение к window в теле компонента вызовет падение сервера
-  // if (typeof window === 'undefined') {
-  //   throw new Error('SSR ERROR: window is not available on server! This is intentional for demo purposes.');
-  // }
-  //const screenWidth = window.innerWidth;
   const [clickCount, setClickCount] = useState(0);
   const [activityLog, setActivityLog] = useState<string[]>([]);
   const [witches, setWitches] = useState<string[]>([]);
 
-  // Вычисляем класс лейбла только когда лейбл передан
-  // Это нужно чтобы обе ветки (left/right) были не покрыты в coverage
-  // когда нет сторисов с cornerLabel
   const getCornerLabelClass = () => {
     if (cornerLabelPosition === 'right') {
       return styles.cornerLabelRight;
